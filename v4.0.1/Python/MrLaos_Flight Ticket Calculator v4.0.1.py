@@ -18,7 +18,7 @@ class TicketCalculator(QWidget):
         self.setWindowTitle("Flight Ticket Calculator v4.0.1 | Tác giả: Batman | Special for Mr Laos")
         self.setFixedWidth(580)  # Cố định chiều rộng của ứng dụng
         try:
-            self.setWindowIcon(QIcon('mrlaos_icon.ico'))
+            self.setWindowIcon(QIcon('./images/mrlaos_icon.ico'))
         except:
             print("Icon không tìm thấy hoặc không hợp lệ.")
 
@@ -606,11 +606,11 @@ class TicketCalculator(QWidget):
             self.update_note_label(self.detected_airlines)
 
             logo_paths = {
-                "Vietjet Air": "logos/vietjet_air.gif",
-                "Bamboo Airways": "logos/bamboo_airways.gif",
-                "Vietnam Airlines": "logos/vietnam_airlines.gif",
-                "Vietravel Airlines": "logos/vietravel_airlines.gif",
-                "Pacific Airlines": "logos/pacific_airlines.gif"
+                "Vietjet Air": "./images/vietjet_air.gif",
+                "Bamboo Airways": "./images/bamboo_airways.gif",
+                "Vietnam Airlines": "./images/vietnam_airlines.gif",
+                "Vietravel Airlines": "./images/vietravel_airlines.gif",
+                "Pacific Airlines": "./images/pacific_airlines.gif"
             }
 
             # Tìm lộ trình
@@ -629,11 +629,11 @@ class TicketCalculator(QWidget):
             if routes:
                 # Sử dụng HTML để hiển thị mũi tên từ file arrow.png
                 self.input_flight1.setText(
-                    f"<span>{routes[0][0].upper()}</span> <img src='logos/arrow.png' width='11'> <span>{routes[0][1].upper()}</span>"
+                    f"<span>{routes[0][0].upper()}</span> <img src='./images/arrow.png' width='11'> <span>{routes[0][1].upper()}</span>"
                 )
                 if len(routes) > 1 and self.is_round_trip:
                     self.input_flight2.setText(
-                        f"<span>{routes[1][0].upper()}</span> <img src='logos/arrow.png' width='11'> <span>{routes[1][1].upper()}</span>"
+                        f"<span>{routes[1][0].upper()}</span> <img src='./images/arrow.png' width='11'> <span>{routes[1][1].upper()}</span>"
                     )
 
             # Xử lý ngày giờ

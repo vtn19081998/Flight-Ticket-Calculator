@@ -29,7 +29,7 @@
 1. **Clone repository**:
 
    ```bash
-   git clone https://github.com/username/flight-ticket-calculator.git
+   git clone https://github.com/vtn19081998/flight-ticket-calculator.git
    cd flight-ticket-calculator
    ```
 
@@ -77,7 +77,7 @@
 
 Dưới đây là giao diện chính của ứng dụng:
 
-![Giao diện Flight Ticket Calculator](images/screenshot.png)
+![Giao diện Flight Ticket Calculator](images/screenshot.jpg)
 
 ## Cấu trúc mã nguồn
 

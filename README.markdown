@@ -77,7 +77,7 @@
 
 Dưới đây là giao diện chính của ứng dụng:
 
-![Giao diện Flight Ticket Calculator](images/screenshot.jpg)
+![Giao diện Flight Ticket Calculator](v4.0.1/Python/images/screenshot.png)
 
 ## Cấu trúc mã nguồn
 

@@ -1,8 +1,51 @@
 import os, re
 from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QTableWidget, \
-    QTableWidgetItem, QSpacerItem, QSizePolicy, QHeaderView, QMessageBox, QGroupBox, QGridLayout, QCheckBox
+    QTableWidgetItem, QSpacerItem, QSizePolicy, QHeaderView, QMessageBox, QGroupBox, QGridLayout, QCheckBox, QComboBox, QTextEdit, QDialog
 from PyQt6.QtGui import QIcon, QFont, QIntValidator, QDoubleValidator, QPixmap, QClipboard, QColor
 from PyQt6.QtCore import Qt, QTimer
+import time
+
+class CustomFormatWindow(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Nhập mẫu tùy chỉnh")
+        self.setFixedSize(500, 400)
+        self.setStyleSheet("""
+            QWidget { background-color: #F5F6FA; font-family: Arial; }
+            QTextEdit { border: 1px solid #CCCCCC; border-radius: 5px; padding: 3px; background-color: white; }
+            QPushButton { border-radius: 5px; padding: 5px; font-weight: bold; color: white; }
+            QLabel { color: #333333; }
+        """)
+        self.initUI()
+
+    def initUI(self):
+        layout = QVBoxLayout()
+        
+        guide_label = QLabel("Sử dụng các placeholder sau trong mẫu của bạn:\n"
+                            "{trip_type}, {airline}, {base_fare}, {voucher}, {total_guests}, "
+                            "{table_data}, {total_cost}, {note}, {flight1_details}, {flight2_details}")
+        guide_label.setWordWrap(True)
+        layout.addWidget(guide_label)
+
+        self.format_text = QTextEdit()
+        self.format_text.setPlaceholderText("Nhập định dạng tùy chỉnh, ví dụ:\nChuyến bay {trip_type} - {airline}\nTổng: {total_cost}")
+        layout.addWidget(self.format_text)
+
+        button_layout = QHBoxLayout()
+        self.confirm_button = QPushButton("Xác nhận")
+        self.confirm_button.setStyleSheet("background-color: #4CAF50;")
+        self.confirm_button.clicked.connect(self.accept)
+        self.cancel_button = QPushButton("Hủy")
+        self.cancel_button.setStyleSheet("background-color: #FF5722;")
+        self.cancel_button.clicked.connect(self.reject)
+        button_layout.addWidget(self.confirm_button)
+        button_layout.addWidget(self.cancel_button)
+        layout.addLayout(button_layout)
+
+        self.setLayout(layout)
+
+    def get_format(self):
+        return self.format_text.toPlainText()
 
 class TicketCalculator(QWidget):
     def __init__(self):
@@ -10,13 +53,14 @@ class TicketCalculator(QWidget):
         self.price_multiplied = False
         self.is_round_trip = False
         self.detected_airlines = []
-        self.discount_amount = 0  # Biến để lưu số tiền được giảm
+        self.discount_amount = 0
+        self.custom_format = ""
 
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle("Flight Ticket Calculator v4.0.1 | Tác giả: Batman")
-        self.setFixedWidth(580)  # Cố định chiều rộng của ứng dụng
+        self.setWindowTitle("Flight Ticket Calculator v5.0.0 | Tác giả: Batman")
+        self.setFixedWidth(580)
         try:
             self.setWindowIcon(QIcon('images/icon.ico'))
         except:
@@ -55,21 +99,27 @@ class TicketCalculator(QWidget):
                 subcontrol-origin: margin;
                 subcontrol-position: top left;
                 padding: 0 5px;
-                font-size: 12px;  /* Tăng kích thước chữ "Ghi chú" từ 14px lên 16px */
+                font-size: 12px;
             }
             QCheckBox:disabled {
                 color: #888888;
             }
-            QMessageBox QPushButton {  /* Tùy chỉnh riêng cho nút trong QMessageBox */
-                background-color: #4CAF50;  /* Màu nền rõ ràng */
-                color: white;  /* Chữ trắng */
+            QComboBox {
+                border: 1px solid #CCCCCC;
+                border-radius: 5px;
+                padding: 3px;
+                background-color: white;
+            }
+            QMessageBox QPushButton {
+                background-color: #4CAF50;
+                color: white;
                 border: 1px solid #388E3C;
                 padding: 5px;
                 min-width: 60px;
                 font-weight: normal;
             }
             QMessageBox QPushButton:hover {
-                background-color: #45A049;  /* Hiệu ứng hover */
+                background-color: #45A049;
             }
         """)
 
@@ -77,13 +127,12 @@ class TicketCalculator(QWidget):
         self.label_title.setFont(QFont("Arial", 16, QFont.Weight.Bold))
         self.label_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        # Thông tin chuyến bay 1
         flight1_group = QGroupBox("Thông tin chuyến bay 1")
         flight1_grid = QGridLayout()
         flight1_grid.setSpacing(5)
         
         self.label_flight_number1 = QLabel()
-        self.label_flight_number1.setFixedSize(50, 60)  # Kích thước cố định cho logo
+        self.label_flight_number1.setFixedSize(50, 60)
         self.label_flight_number1.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         self.input_flight1 = QLabel()
@@ -101,23 +150,21 @@ class TicketCalculator(QWidget):
         self.input_plane_type1 = QLineEdit()
         self.input_plane_type1.setReadOnly(True)
 
-        # Sắp xếp: logo ở trước input_flight cho chuyến 1
-        flight1_grid.addWidget(self.label_flight_number1, 0, 0, 2, 1)  # Logo ở cột 0, span 2 hàng
-        flight1_grid.addWidget(self.input_flight1, 0, 1)  # input_flight ở cột 1
+        flight1_grid.addWidget(self.label_flight_number1, 0, 0, 2, 1)
+        flight1_grid.addWidget(self.input_flight1, 0, 1)
         flight1_grid.addWidget(self.label_time1, 0, 2)
         flight1_grid.addWidget(self.input_time1, 0, 3)
-        flight1_grid.addWidget(self.input_flight_number1, 1, 1)  # flight number ở hàng dưới
+        flight1_grid.addWidget(self.input_flight_number1, 1, 1)
         flight1_grid.addWidget(self.label_plane_type1, 1, 2)
         flight1_grid.addWidget(self.input_plane_type1, 1, 3)
         flight1_group.setLayout(flight1_grid)
 
-        # Thông tin chuyến bay 2 (khứ hồi)
         self.flight2_group = QGroupBox("Thông tin chuyến bay 2 (khứ hồi)")
         flight2_grid = QGridLayout()
         flight2_grid.setSpacing(5)
         
         self.label_flight_number2 = QLabel()
-        self.label_flight_number2.setFixedSize(50, 60)  # Kích thước cố định cho logo
+        self.label_flight_number2.setFixedSize(50, 60)
         self.label_flight_number2.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         self.input_flight2 = QLabel()
@@ -135,12 +182,11 @@ class TicketCalculator(QWidget):
         self.input_plane_type2 = QLineEdit()
         self.input_plane_type2.setReadOnly(True)
 
-        # Sắp xếp: logo ở trước input_flight cho chuyến 2
-        flight2_grid.addWidget(self.label_flight_number2, 0, 0, 2, 1)  # Logo ở cột 0, span 2 hàng
-        flight2_grid.addWidget(self.input_flight2, 0, 1)  # input_flight ở cột 1
+        flight2_grid.addWidget(self.label_flight_number2, 0, 0, 2, 1)
+        flight2_grid.addWidget(self.input_flight2, 0, 1)
         flight2_grid.addWidget(self.label_time2, 0, 2)
         flight2_grid.addWidget(self.input_time2, 0, 3)
-        flight2_grid.addWidget(self.input_flight_number2, 1, 1)  # flight number ở hàng dưới
+        flight2_grid.addWidget(self.input_flight_number2, 1, 1)
         flight2_grid.addWidget(self.label_plane_type2, 1, 2)
         flight2_grid.addWidget(self.input_plane_type2, 1, 3)
         self.flight2_group.setLayout(flight2_grid)
@@ -158,7 +204,7 @@ class TicketCalculator(QWidget):
         self.input_price = QLineEdit()
         self.input_price.setValidator(QDoubleValidator(0.99, 99999999.99, 2))
         self.input_price.setToolTip("Nhập giá vé gốc, tự động nhân 1000 nếu cần")
-        self.input_price.setFont(QFont("Arial", 9, QFont.Weight.Bold))  # Giảm kích thước font xuống 10, giữ in đậm
+        self.input_price.setFont(QFont("Arial", 9, QFont.Weight.Bold))
         self.input_price.textChanged.connect(self.format_price)
         self.input_price.returnPressed.connect(lambda: self.apply_multiplier(trigger_calculate=True))
         self.input_price.editingFinished.connect(lambda: self.apply_multiplier(trigger_calculate=False))
@@ -193,7 +239,16 @@ class TicketCalculator(QWidget):
         input_grid.addWidget(self.input_infant, 2, 1)
         passenger_group.setLayout(input_grid)
 
-        button_layout = QHBoxLayout()
+        self.format_layout = QHBoxLayout()
+        self.label_format = QLabel("Mẫu xuất dữ liệu:")
+        self.format_combo = QComboBox()
+        self.format_combo.addItems(["Mẫu chuẩn", "Mẫu ngắn gọn", "Mẫu chi tiết", "Mẫu tùy chỉnh"])
+        self.format_combo.setToolTip("Chọn định dạng nội dung khi xuất dữ liệu")
+        self.format_layout.addWidget(self.label_format)
+        self.format_layout.addWidget(self.format_combo)
+        self.format_layout.addStretch()
+
+        self.button_layout = QHBoxLayout()
         self.button_calculate = QPushButton("📊 Tính toán")
         self.button_calculate.setStyleSheet("background-color: #4CAF50;")
         self.button_calculate.clicked.connect(self.calculate_total_and_capture)
@@ -207,27 +262,31 @@ class TicketCalculator(QWidget):
         self.button_ocr.setStyleSheet("background-color: #FF9800;")
         self.button_ocr.clicked.connect(self.extract_from_clipboard)
 
-        button_layout.addWidget(self.button_calculate)
-        button_layout.addWidget(self.button_clear)
-        button_layout.addWidget(self.button_screenshot)
-        button_layout.addWidget(self.button_ocr)
-        button_layout.setSpacing(10)
+        self.button_layout.addWidget(self.button_calculate)
+        self.button_layout.addWidget(self.button_clear)
+        self.button_layout.addWidget(self.button_screenshot)
+        self.button_layout.addWidget(self.button_ocr)
+        self.button_layout.setSpacing(10)
 
+        self.table_group = QGroupBox("Giá vé sau khuyến mãi")
+        table_layout = QVBoxLayout()
         self.table = QTableWidget()
-        self.table.setColumnCount(5)  # Tăng lên 5 cột để thêm cột số thứ tự
+        self.table.setColumnCount(5)
         self.table.setHorizontalHeaderLabels(["STT", "LOẠI VÉ", "SỐ LƯỢNG", "TIỀN 1 VÉ", "THÀNH TIỀN"])
-        self.table.verticalHeader().setVisible(False)  # Ẩn số thứ tự mặc định của hàng
+        self.table.verticalHeader().setVisible(False)
         self.table.horizontalHeader().setStyleSheet("background-color: #D3D3D3;")
         self.table.setStyleSheet("border: 1px solid #CCCCCC; font-size: 12px;")
         self.table.setRowCount(3)
-        self.table.setColumnWidth(0, 60)  # Độ rộng cột "STT"
-        self.table.setColumnWidth(2, 80)  # Chiều rộng cột "SỐ LƯỢNG"
-        self.table.horizontalHeader().setMinimumHeight(30)  # Chiều cao hàng tiêu đề
-        self.table.horizontalHeader().setFont(QFont("Arial", 12, QFont.Weight.Bold))  # In đậm text trong hàng tiêu đề
-        self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)  # Cột "LOẠI VÉ" co giãn
-        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)  # Cột "TIỀN 1 VÉ" co giãn
-        self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Stretch)  # Cột "THÀNH TIỀN" co giãn
+        self.table.setColumnWidth(0, 60)
+        self.table.setColumnWidth(2, 80)
+        self.table.horizontalHeader().setMinimumHeight(30)
+        self.table.horizontalHeader().setFont(QFont("Arial", 12, QFont.Weight.Bold))
+        self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
+        self.table.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
+        self.table.horizontalHeader().setSectionResizeMode(4, QHeaderView.ResizeMode.Stretch)
         self.adjust_table_height()
+        table_layout.addWidget(self.table)
+        self.table_group.setLayout(table_layout)
 
         self.result_label = QLineEdit()
         self.result_label.setFont(QFont("Arial", 12, QFont.Weight.Bold))
@@ -236,14 +295,12 @@ class TicketCalculator(QWidget):
         self.result_label.setReadOnly(True)
         self.result_label.setFixedHeight(40)
 
-        # Thêm icon Unicode và tô màu đỏ cho chữ "Ghi chú"
         note_group = QGroupBox("📝 Ghi chú")
-        note_group.setStyleSheet("QGroupBox::title { color: red; }")  # Tô màu đỏ cho tiêu đề "Ghi chú"
+        note_group.setStyleSheet("QGroupBox::title { color: red; }")
         note_layout = QVBoxLayout()
         self.note_label = QLabel()
         self.note_label.setWordWrap(True)
-        # Đặt font chữ Arial, in nghiêng, và giảm kích thước chữ trong note_label
-        self.note_label.setStyleSheet("font-family: Arial; font-size: 12px;")  # Giảm từ 12px xuống 11px
+        self.note_label.setStyleSheet("font-family: Arial; font-size: 12px;")
         self.update_note_label([])
 
         note_layout.addWidget(self.note_label)
@@ -259,8 +316,9 @@ class TicketCalculator(QWidget):
         self.main_layout.addWidget(flight1_group)
         self.main_layout.addWidget(self.flight2_group)
         self.main_layout.addWidget(passenger_group)
-        self.main_layout.addLayout(button_layout)
-        self.main_layout.addWidget(self.table)
+        self.main_layout.addLayout(self.format_layout)
+        self.main_layout.addLayout(self.button_layout)
+        self.main_layout.addWidget(self.table_group)
         self.main_layout.addWidget(self.result_label)
         self.main_layout.addWidget(note_group)
         self.main_layout.addWidget(self.copyright_label)
@@ -288,7 +346,7 @@ class TicketCalculator(QWidget):
         self.table.setFixedHeight(total_height)
 
     def adjust_window_height(self):
-        self.adjustSize()  # Tự động điều chỉnh chiều cao dựa trên nội dung
+        self.adjustSize()
 
     def clear_on_focus(self, event):
         self.input_price.clear()
@@ -314,11 +372,92 @@ class TicketCalculator(QWidget):
         if not all(required_inputs):
             QMessageBox.warning(self, "Thiếu thông tin", "Vui lòng nhập đầy đủ tất cả các trường trước khi chụp ảnh màn hình.")
             return
-        pixmap = QPixmap(self.size())
-        self.render(pixmap)
-        clipboard = QApplication.clipboard()
-        clipboard.setPixmap(pixmap)
-        QMessageBox.information(self, "Chụp ảnh màn hình", "Ảnh màn hình đã được sao chép vào clipboard.")
+        try:
+            # Ẩn format_layout và button_layout
+            format_label = self.format_layout.itemAt(0).widget() if self.format_layout.count() > 0 else None
+            format_combo = self.format_layout.itemAt(1).widget() if self.format_layout.count() > 1 else None
+            button_calculate = self.button_layout.itemAt(0).widget() if self.button_layout.count() > 0 else None
+            button_clear = self.button_layout.itemAt(1).widget() if self.button_layout.count() > 1 else None
+            button_screenshot = self.button_layout.itemAt(2).widget() if self.button_layout.count() > 2 else None
+            button_ocr = self.button_layout.itemAt(3).widget() if self.button_layout.count() > 3 else None
+
+            if format_label:
+                format_label.setVisible(False)
+            if format_combo:
+                format_combo.setVisible(False)
+            if button_calculate:
+                button_calculate.setVisible(False)
+            if button_clear:
+                button_clear.setVisible(False)
+            if button_screenshot:
+                button_screenshot.setVisible(False)
+            if button_ocr:
+                button_ocr.setVisible(False)
+
+            # Cập nhật bố cục và đợi giao diện vẽ hoàn tất
+            QApplication.processEvents()
+            time.sleep(0.05)  # Độ trễ nhỏ để đảm bảo giao diện ổn định
+
+            # Chụp màn hình với render()
+            pixmap = QPixmap(self.size())
+            self.render(pixmap, renderFlags=QWidget.RenderFlag.DrawWindowBackground | QWidget.RenderFlag.DrawChildren)
+
+            # Kiểm tra pixmap
+            if pixmap.isNull():
+                raise Exception("Ảnh chụp màn hình rỗng hoặc không hợp lệ")
+
+            # Xóa clipboard trước khi sao chép
+            clipboard = QApplication.clipboard()
+            clipboard.clear()
+
+            # Sao chép vào clipboard
+            clipboard.setPixmap(pixmap)
+
+            # Kiểm tra xem clipboard có chứa ảnh không
+            if not clipboard.pixmap():
+                # Lưu ảnh tạm thời như phương án dự phòng
+                temp_file = "screenshot_temp.png"
+                pixmap.save(temp_file, "PNG")
+                raise Exception(f"Không thể sao chép vào clipboard. Ảnh đã được lưu tại {temp_file}")
+
+            # Khôi phục các thành phần
+            if format_label:
+                format_label.setVisible(True)
+            if format_combo:
+                format_combo.setVisible(True)
+            if button_calculate:
+                button_calculate.setVisible(True)
+            if button_clear:
+                button_clear.setVisible(True)
+            if button_screenshot:
+                button_screenshot.setVisible(True)
+            if button_ocr:
+                button_ocr.setVisible(True)
+
+            QMessageBox.information(self, "Chụp ảnh màn hình", "Ảnh màn hình đã được sao chép vào clipboard.")
+        except Exception as e:
+            # Khôi phục các thành phần nếu có lỗi
+            format_label = self.format_layout.itemAt(0).widget() if self.format_layout.count() > 0 else None
+            format_combo = self.format_layout.itemAt(1).widget() if self.format_layout.count() > 1 else None
+            button_calculate = self.button_layout.itemAt(0).widget() if self.button_layout.count() > 0 else None
+            button_clear = self.button_layout.itemAt(1).widget() if self.button_layout.count() > 1 else None
+            button_screenshot = self.button_layout.itemAt(2).widget() if self.button_layout.count() > 2 else None
+            button_ocr = self.button_layout.itemAt(3).widget() if self.button_layout.count() > 3 else None
+
+            if format_label:
+                format_label.setVisible(True)
+            if format_combo:
+                format_combo.setVisible(True)
+            if button_calculate:
+                button_calculate.setVisible(True)
+            if button_clear:
+                button_clear.setVisible(True)
+            if button_screenshot:
+                button_screenshot.setVisible(True)
+            if button_ocr:
+                button_ocr.setVisible(True)
+
+            QMessageBox.critical(self, "Lỗi chụp ảnh màn hình", f"Chi tiết lỗi: {str(e)}")
 
     def copy_text(self):
         required_inputs = [
@@ -343,40 +482,104 @@ class TicketCalculator(QWidget):
 
             airline_name = ", ".join(self.detected_airlines[:2]) if self.detected_airlines else "Không xác định"
             note_text = self.note_label.text().strip()
-
-            # Xác định loại chuyến bay
             trip_type = "khứ hồi" if self.is_round_trip else "1 chiều"
-            trip_text = f"Đây là chuyến bay {trip_type}.\n"  # Dòng này luôn hiển thị, bất kể 1 chiều hay khứ hồi
 
-            intro_text = "✈️  EM GỬI ANH/CHỊ THÔNG TIN CHUYẾN BAY:\n\n"
-            airline_text = f"♦️ Hãng bay: {airline_name}.\n"
-            base_fare_text = f"♦️ Giá vé gốc: {base_fare_value:,.0f} VNĐ/vé\n"
-            voucher_text = f"♦️ Mã voucher khuyến mãi: {voucher_value}%\n\n"
-            guest_text = f"♦️ Tổng số khách: {total_guests}\n"
-            after_voucher = "💰 CHI PHÍ SAU KHUYẾN MÃI:\n\n"
+            selected_format = self.format_combo.currentText()
 
             table_data = ""
             for row in range(self.table.rowCount()):
-                item_quantity = self.table.item(row, 2)  # Cột "SỐ LƯỢNG" giờ là cột 2
+                item_quantity = self.table.item(row, 2)
                 if item_quantity and item_quantity.text().isdigit() and int(item_quantity.text()) > 0:
-                    item_name = self.table.item(row, 1).text().strip()  # Cột "LOẠI VÉ" là cột 1
+                    item_name = self.table.item(row, 1).text().strip()
                     quantity = int(item_quantity.text())
-                    price = float(self.table.item(row, 3).text().replace(" VNĐ", "").replace(",", "").strip()) if "Miễn phí" not in self.table.item(row, 3).text() else 0  # Cột "TIỀN 1 VÉ" là cột 3
-                    total = float(self.table.item(row, 4).text().replace(" VNĐ", "").replace(",", "").strip())  # Cột "THÀNH TIỀN" là cột 4
+                    price = float(self.table.item(row, 3).text().replace(" VNĐ", "").replace(",", "").strip()) if "Miễn phí" not in self.table.item(row, 3).text() else 0
+                    total = float(self.table.item(row, 4).text().replace(" VNĐ", "").replace(",", "").strip())
                     formatted_line = f"{item_name}: {quantity} x {price:,.0f} = {total:,.0f} VNĐ\n" if price > 0 else f"{item_name}: {quantity} x Miễn phí = 0 VNĐ\n"
                     table_data += formatted_line
 
             total_cost = self.result_label.text().strip()
+            note_text_cleaned = re.sub(r'<br>', '\n', note_text)
+            note_text_cleaned = re.sub(r'<[^>]+>', '', note_text_cleaned)
 
-            # Xử lý note_text: thay <br> bằng \n và xóa các thẻ HTML khác
-            note_text_cleaned = re.sub(r'<br>', '\n', note_text)  # Thay <br> bằng \n
-            note_text_cleaned = re.sub(r'<[^>]+>', '', note_text_cleaned)  # Xóa các thẻ HTML còn lại (như <span>)
+            flight1_details = (
+                f"Chuyến bay 1:\n"
+                f"  - Lộ trình: {self.input_flight1.text()}\n"
+                f"  - Thời gian: {self.input_time1.text()}\n"
+                f"  - Số hiệu: {self.input_flight_number1.text()}\n"
+                f"  - Loại máy bay: {self.input_plane_type1.text()}\n"
+            )
+            flight2_details = (
+                f"Chuyến bay 2:\n"
+                f"  - Lộ trình: {self.input_flight2.text()}\n"
+                f"  - Thời gian: {self.input_time2.text()}\n"
+                f"  - Số hiệu: {self.input_flight_number2.text()}\n"
+                f"  - Loại máy bay: {self.input_plane_type2.text()}\n"
+            ) if self.is_round_trip else ""
 
-            # Kết hợp nội dung với dòng mới
-            clipboard_content = f"{intro_text}{trip_text}{airline_text}{base_fare_text}{guest_text}{voucher_text}{after_voucher}{table_data}\n💵 {total_cost}\n\n🎒 {note_text_cleaned}"
+            if selected_format == "Mẫu tùy chỉnh":
+                custom_window = CustomFormatWindow(self)
+                if custom_window.exec() == QDialog.DialogCode.Accepted:
+                    self.custom_format = custom_window.get_format()
+                else:
+                    QMessageBox.information(self, "Hủy", "Đã hủy nhập mẫu tùy chỉnh.")
+                    return
+
+                if not self.custom_format.strip():
+                    QMessageBox.warning(self, "Lỗi", "Mẫu tùy chỉnh không được để trống!")
+                    return
+
+                clipboard_content = self.custom_format.format(
+                    trip_type=trip_type,
+                    airline=airline_name,
+                    base_fare=f"{base_fare_value:,.0f} VNĐ",
+                    voucher=f"{voucher_value}%",
+                    total_guests=str(total_guests),
+                    table_data=table_data,
+                    total_cost=total_cost,
+                    note=note_text_cleaned,
+                    flight1_details=flight1_details,
+                    flight2_details=flight2_details
+                )
+            elif selected_format == "Mẫu chuẩn":
+                clipboard_content = (
+                    "✈️ EM GỬI ANH/CHỊ THÔNG TIN CHUYẾN BAY:\n\n"
+                    f"Đây là chuyến bay {trip_type}.\n"
+                    f"♦️ Hãng bay: {airline_name}.\n"
+                    f"♦️ Giá vé gốc: {base_fare_value:,.0f} VNĐ/vé\n"
+                    f"♦️ Tổng số khách: {total_guests}\n"
+                    f"♦️ Mã voucher khuyến mãi: {voucher_value}%\n\n"
+                    "💰 CHI PHÍ SAU KHUYẾN MÃI:\n\n"
+                    f"{table_data}\n"
+                    f"💵 {total_cost}\n\n"
+                    f"🎒 {note_text_cleaned}"
+                )
+            elif selected_format == "Mẫu ngắn gọn":
+                clipboard_content = (
+                    f"✈️ CHUYẾN BAY {trip_type.upper()} - {airline_name}\n"
+                    f"Giá vé gốc: {base_fare_value:,.0f} VNĐ\n"
+                    f"Voucher: {voucher_value}%\n"
+                    f"Tổng chi phí: {total_cost}\n"
+                    f"Số khách: {total_guests}"
+                )
+            elif selected_format == "Mẫu chi tiết":
+                clipboard_content = (
+                    "✈️ THÔNG TIN CHUYẾN BAY:\n\n"
+                    f"Loại chuyến: {trip_type.upper()}\n"
+                    f"Hãng bay: {airline_name}\n"
+                    f"{flight1_details}"
+                    f"{flight2_details}\n"
+                    f"Giá vé gốc: {base_fare_value:,.0f} VNĐ/vé\n"
+                    f"Voucher: {voucher_value}%\n"
+                    f"Số khách: {total_guests} (Người lớn: {adult_count}, Trẻ 2-11: {child_count}, Dưới 2 tuổi: {infant_count})\n\n"
+                    "💰 CHI PHÍ:\n"
+                    f"{table_data}\n"
+                    f"💵 {total_cost}\n\n"
+                    f"📝 Ghi chú: {note_text_cleaned}"
+                )
+
             clipboard = QApplication.clipboard()
             clipboard.setText(clipboard_content)
-            QMessageBox.information(self, "Sao chép nội dung", "Kết quả đã được sao chép vào clipboard.")
+            QMessageBox.information(self, "Sao chép nội dung", f"Nội dung đã được sao chép vào clipboard theo {selected_format}.")
         except Exception as e:
             QMessageBox.critical(self, "Lỗi", f"Có lỗi xảy ra: {str(e)}")
 
@@ -390,64 +593,51 @@ class TicketCalculator(QWidget):
             child_count = int(self.input_child.text())
             infant_count = int(self.input_infant.text())
 
-            # Tính giá vé gốc (đã giảm 30% mặc định cho trẻ em)
             adult_original_price = price * adult_count
-            child_original_price = (price * 0.7) * child_count  # Giảm 30% mặc định cho trẻ em
-            original_price = adult_original_price + child_original_price  # Tổng giá vé gốc (sau khi giảm mặc định cho trẻ em)
+            child_original_price = (price * 0.7) * child_count
+            original_price = adult_original_price + child_original_price
 
-            # Tính giá vé sau khi áp dụng voucher
             adult_price = price * (1 - discount)
-            child_price = (price * 0.7) * (1 - discount)  # Đã giảm 30% mặc định, sau đó áp dụng thêm voucher
+            child_price = (price * 0.7) * (1 - discount)
             total_adult = adult_price * adult_count
             total_child = child_price * child_count
-            total_infant = 0  # Trẻ dưới 2 tuổi miễn phí
+            total_infant = 0
             total = total_adult + total_child + total_infant
 
-            # Tính số tiền được giảm
-            self.discount_amount = original_price - total  # Số tiền được giảm = Tổng giá vé gốc (đã giảm 30% mặc định cho trẻ em) - Tổng chi phí sau voucher
-
+            self.discount_amount = original_price - total
             self.result_label.setText(f"TỔNG CHI PHÍ TOÀN HÀNH TRÌNH: {total:,.0f} VNĐ")
 
-            # Căn giữa nội dung trong cột "STT" (cột 0)
             item_1 = QTableWidgetItem("1")
             item_1.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             self.table.setItem(0, 0, item_1)
-
             self.table.setItem(0, 1, QTableWidgetItem("Người lớn"))
             item_2 = QTableWidgetItem(str(adult_count))
-            item_2.setTextAlignment(Qt.AlignmentFlag.AlignCenter)  # Căn giữa cột "SỐ LƯỢNG"
+            item_2.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             self.table.setItem(0, 2, item_2)
-            item_3 = QTableWidgetItem(f"{adult_price:,.0f} VNĐ")
-            self.table.setItem(0, 3, item_3)
+            self.table.setItem(0, 3, QTableWidgetItem(f"{adult_price:,.0f} VNĐ"))
             self.table.setItem(0, 4, QTableWidgetItem(f"{total_adult:,.0f} VNĐ"))
 
-            # Căn giữa nội dung trong cột "STT" (cột 0)
             item_4 = QTableWidgetItem("2")
             item_4.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             self.table.setItem(1, 0, item_4)
-
             self.table.setItem(1, 1, QTableWidgetItem("Trẻ em 2-11 tuổi"))
             item_5 = QTableWidgetItem(str(child_count))
-            item_5.setTextAlignment(Qt.AlignmentFlag.AlignCenter)  # Căn giữa cột "SỐ LƯỢNG"
+            item_5.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             self.table.setItem(1, 2, item_5)
-            item_6 = QTableWidgetItem(f"{child_price:,.0f} VNĐ")
-            self.table.setItem(1, 3, item_6)
+            self.table.setItem(1, 3, QTableWidgetItem(f"{child_price:,.0f} VNĐ"))
             self.table.setItem(1, 4, QTableWidgetItem(f"{total_child:,.0f} VNĐ"))
 
-            # Căn giữa nội dung trong cột "STT" (cột 0)
             item_7 = QTableWidgetItem("3")
             item_7.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             self.table.setItem(2, 0, item_7)
-
             self.table.setItem(2, 1, QTableWidgetItem("Trẻ em dưới 2 tuổi"))
             item_8 = QTableWidgetItem(str(infant_count))
-            item_8.setTextAlignment(Qt.AlignmentFlag.AlignCenter)  # Căn giữa cột "SỐ LƯỢNG"
+            item_8.setTextAlignment(Qt.AlignmentFlag.AlignCenter)
             self.table.setItem(2, 2, item_8)
-            item_9 = QTableWidgetItem("Miễn phí")
-            self.table.setItem(2, 3, item_9)
+            self.table.setItem(2, 3, QTableWidgetItem("Miễn phí"))
             self.table.setItem(2, 4, QTableWidgetItem("0 VNĐ"))
 
-            self.update_note_label(self.detected_airlines)  # Cập nhật ghi chú với số tiền được giảm
+            self.update_note_label(self.detected_airlines)
             self.adjust_table_height()
         except ValueError:
             QMessageBox.warning(self, "Lỗi nhập liệu", "Vui lòng nhập đầy đủ thông tin hợp lệ.")
@@ -458,12 +648,12 @@ class TicketCalculator(QWidget):
         self.input_adult.clear()
         self.input_child.clear()
         self.input_infant.clear()
-        self.input_flight1.setText("")  # Thay clear() bằng setText("")
+        self.input_flight1.setText("")
         self.input_time1.clear()
         self.label_flight_number1.clear()
         self.input_flight_number1.clear()
         self.input_plane_type1.clear()
-        self.input_flight2.setText("")  # Thay clear() bằng setText("")
+        self.input_flight2.setText("")
         self.input_time2.clear()
         self.label_flight_number2.clear()
         self.input_flight_number2.clear()
@@ -519,21 +709,15 @@ class TicketCalculator(QWidget):
             "Vietravel Airlines": "+ Với mỗi của Vietravel Airlines, được mang theo 7kg hành lý xách tay và 1 kiện 15kg hành lý ký gửi",
             "Pacific Airlines": "+ Với mỗi vé Pacific Airlines, được mang theo 7kg hành lý xách tay và 1 kiện 23kg hành lý ký gửi"
         }
-
-        # Dòng "Số tiền được giảm" với màu xanh
         discount_text = f"<span style='color:green'>Số tiền được giảm trong chuyến bay này là: {self.discount_amount:,.0f} VNĐ.</span><br>"
-
-        # Nội dung ghi chú cơ bản (màu mặc định)
         base_text = "Tổng giá vé đã bao gồm toàn bộ thuế, phí" + (", suất ăn" if "Vietnam Airlines" in detected_airlines else "") + ".<br>"
-
-        # Kết hợp nội dung
         if not detected_airlines:
             self.note_label.setText(discount_text + base_text)
         elif len(detected_airlines) == 1:
             self.note_label.setText(discount_text + base_text + notes[detected_airlines[0]])
         else:
             self.note_label.setText(discount_text + base_text + notes[detected_airlines[0]] + "<br>" + notes[detected_airlines[1]])
-        
+
     def extract_from_clipboard(self):
         try:
             clipboard = QApplication.clipboard()
@@ -545,7 +729,6 @@ class TicketCalculator(QWidget):
             text = ''.join(char for char in text if ord(char) >= 32 or char in '\n\t')
             normalized_text = " ".join(text.split()).lower()
 
-            # Tìm giá vé
             price_pattern = r'\d{1,3}(?:[.,]\d{3})*(?:\.\d{2})?'
             prices = re.findall(price_pattern, text)
             if prices:
@@ -553,7 +736,6 @@ class TicketCalculator(QWidget):
                 self.input_price.setText("{:,.0f}".format(max_price))
                 self.price_multiplied = True
 
-            # Danh sách hãng bay và đường dẫn logo
             airlines = ["Vietjet Air", "Bamboo Airways", "Vietnam Airlines", "Vietravel Airlines", "Pacific Airlines"]
             self.detected_airlines = [airline for airline in airlines if " ".join(airline.split()).lower() in normalized_text]
             self.update_note_label(self.detected_airlines)
@@ -566,11 +748,9 @@ class TicketCalculator(QWidget):
                 "Pacific Airlines": "images/pacific_airlines.gif"
             }
 
-            # Tìm lộ trình
             route_pattern = r'(hà nội|tp hồ chí minh|đà nẵng|nha trang|hải phòng|phú quốc|đà lạt|cần thơ|quy nhơn|thanh hóa|thanh hoá|vinh|tp vinh|huế|điện biên|quảng ninh|buôn mê thuột|pleiku|tuy hòa|tuy hoà|côn đảo|rạch giá|đồng hới|tam kỳ|cà mau)\s+(hà nội|tp hồ chí minh|đà nẵng|nha trang|hải phòng|phú quốc|đà lạt|cần thơ|quy nhơn|thanh hóa|thanh hoá|vinh|tp vinh|huế|điện biên|quảng ninh|buôn mê thuột|pleiku|tuy hòa|tuy hoà|côn đảo|rạch giá|đồng hới|tam kỳ|cà mau)'
             routes = re.findall(route_pattern, normalized_text)
 
-            # Tìm cặp "tên hãng + số hiệu" trong văn bản
             flight_pattern = r'(vietjet air|bamboo airways|vietnam airlines|vietravel airlines|pacific airlines)\s+(vj|vn|qh|vu|bl)\s*(\d{2,4})'
             flight_matches = re.findall(flight_pattern, text, re.IGNORECASE)
             
@@ -578,9 +758,7 @@ class TicketCalculator(QWidget):
             self.round_trip_checkbox.setChecked(self.is_round_trip)
             self.flight2_group.setVisible(self.is_round_trip)
 
-            # Điền lộ trình với hình ảnh mũi tên
             if routes:
-                # Sử dụng HTML để hiển thị mũi tên từ file arrow.png
                 self.input_flight1.setText(
                     f"<span>{routes[0][0].upper()}</span> <img src='images/arrow.png' width='11'> <span>{routes[0][1].upper()}</span>"
                 )
@@ -589,7 +767,6 @@ class TicketCalculator(QWidget):
                         f"<span>{routes[1][0].upper()}</span> <img src='images/arrow.png' width='11'> <span>{routes[1][1].upper()}</span>"
                     )
 
-            # Xử lý ngày giờ
             day_map = {
                 'thứ hai': 'THỨ HAI', 'thứ ba': 'THỨ BA', 'thứ tư': 'THỨ TƯ', 'thứ năm': 'THỨ NĂM',
                 'thứ sáu': 'THỨ SÁU', 'thứ bảy': 'THỨ BẢY', 'chủ nhật': 'CHỦ NHẬT'
@@ -606,14 +783,11 @@ class TicketCalculator(QWidget):
                 if self.is_round_trip and len(days) > 1:
                     self.input_time2.setText(f"{days[1]} | {dates[1].upper() if len(dates) > 1 else ''} | {time_ranges[1].upper() if len(time_ranges) > 1 else ''}")
 
-            # Điền số hiệu chuyến bay và gán logo
             if flight_matches:
-                # Chuyến bay 1
                 if len(flight_matches) >= 1:
-                    airline1 = flight_matches[0][0].title()  # Tên hãng (VD: "Vietnam Airlines")
-                    flight_num1 = f"{flight_matches[0][1]}{flight_matches[0][2]}"  # Số hiệu (VD: "VN270")
+                    airline1 = flight_matches[0][0].title()
+                    flight_num1 = f"{flight_matches[0][1]}{flight_matches[0][2]}"
                     self.input_flight_number1.setText(f"{airline1.upper()} | {flight_num1.upper()}")
-                    # Gán logo dựa trên tên hãng trong input_flight_number1
                     for airline, logo_path in logo_paths.items():
                         if airline.upper() in self.input_flight_number1.text():
                             pixmap1 = QPixmap(logo_path)
@@ -625,12 +799,10 @@ class TicketCalculator(QWidget):
                     else:
                         self.label_flight_number1.setText("❓")
 
-                # Chuyến bay 2 (nếu có)
                 if len(flight_matches) >= 2 and self.is_round_trip:
-                    airline2 = flight_matches[1][0].title()  # Tên hãng (VD: "Vietjet Air")
-                    flight_num2 = f"{flight_matches[1][1]}{flight_matches[1][2]}"  # Số hiệu (VD: "VJ1175")
+                    airline2 = flight_matches[1][0].title()
+                    flight_num2 = f"{flight_matches[1][1]}{flight_matches[1][2]}"
                     self.input_flight_number2.setText(f"{airline2.upper()} | {flight_num2.upper()}")
-                    # Gán logo dựa trên tên hãng trong input_flight_number2
                     for airline, logo_path in logo_paths.items():
                         if airline.upper() in self.input_flight_number2.text():
                             pixmap2 = QPixmap(logo_path)
@@ -642,7 +814,6 @@ class TicketCalculator(QWidget):
                     else:
                         self.label_flight_number2.setText("❓")
 
-            # Xử lý loại máy bay
             plane_type_pattern = r'(a\d{2,3}|boeing\s*\d{3}|airbus\s*a\d{2,3})'
             plane_types = re.findall(plane_type_pattern, normalized_text)
             if plane_types:

@@ -507,165 +507,107 @@ class TicketCalculator(QWidget):
             return
 
         try:
-            voucher_input = self.input_discount.text().strip()
-            voucher_value = voucher_input if voucher_input.replace('.', '').isdigit() else "0"
-            base_fare_input = self.input_price.text().strip()
-            base_fare_value = int(base_fare_input.replace(',', '')) if base_fare_input.replace(',', '').isdigit() else 0
+            # Lấy giá trị từ input
+            voucher_value = int(self.input_discount.text().strip() or "0")
+            base_fare_value = int(self.input_price.text().strip().replace(',', '')) if self.input_price.text().strip().replace(',', '').isdigit() else 0
             adult_count = int(self.input_adult.text())
             child_count = int(self.input_child.text())
             infant_count = int(self.input_infant.text())
             total_guests = adult_count + child_count + infant_count
+            discount = voucher_value / 100
+            adult_price = base_fare_value * (1 - discount)
+            child_price = (base_fare_value * 0.7) * (1 - discount)
 
+            # Xác định hãng bay
             possible_airlines = ["Vietjet Air", "Bamboo Airways", "Vietnam Airlines", "Vietravel Airlines", "Pacific Airlines"]
             airlines = []
             flight1_text = self.input_flight_number1.text().strip().upper()
             flight2_text = self.input_flight_number2.text().strip().upper()
 
-            airline1 = "Không xác định"
-            for airline in possible_airlines:
-                if airline.upper() in flight1_text:
-                    airline1 = airline
-                    break
+            airline1 = next((airline for airline in possible_airlines if airline.upper() in flight1_text), "Không xác định")
             airlines.append(airline1)
-
             if self.is_round_trip and flight2_text:
-                airline2 = "Không xác định"
-                for airline in possible_airlines:
-                    if airline.upper() in flight2_text:
-                        airline2 = airline
-                        break
+                airline2 = next((airline for airline in possible_airlines if airline.upper() in flight2_text), "Không xác định")
                 airlines.append(airline2)
-
             airline_name = airlines[0] if len(airlines) == 1 or airlines[0] == airlines[1] else ", ".join(airlines[:2])
 
-            note_text = self.note_label.text().strip()
+            # Hàm tạo nội dung note chung
+            def get_note_content(airlines):
+                luggage_notes = {
+                    "Vietjet Air": "được mang 7kg xách tay và 1 kiện 20kg hành lý ký gửi",
+                    "Bamboo Airways": "được mang 7kg xách tay và 1 kiện 20kg hành lý ký gửi",
+                    "Vietnam Airlines": "được mang 10kg xách tay và 1 kiện 23kg hành lý ký gửi",
+                    "Vietravel Airlines": "được mang 7kg xách tay và 1 kiện 15kg hành lý ký gửi",
+                    "Pacific Airlines": "được mang 7kg xách tay và 1 kiện 23kg hành lý ký gửi"
+                }
+                base_text = "Tổng giá vé đã bao gồm toàn bộ thuế phí"
+                if "Vietnam Airlines" in airlines:
+                    base_text += ", suất ăn"
+                luggage1 = luggage_notes.get(airlines[0], "không có thông tin hành lý")
+                luggage2 = luggage_notes.get(airlines[1] if len(airlines) > 1 else airlines[0], "không có thông tin hành lý")
+                if len(airlines) == 1 or luggage1 == luggage2:
+                    return f"{base_text}, {luggage1}"
+                return f"{base_text}\n● Chuyến 1: Với mỗi vé, {luggage1}\n● Chuyến 2: Với mỗi vé, {luggage2}"
+
+            # Xử lý định dạng văn bản
             trip_type = "khứ hồi" if self.is_round_trip else "1 chiều"
-            trip_text = f"Đây là chuyến bay {trip_type}.\n"
-
-            def format_route(route_text):
-                clean_text = re.sub(r'<[^>]+>', '', route_text).strip()
-                clean_text = re.sub(r'\s*[-→]\s*|\s{2,}', ' > ', clean_text)
-                parts = clean_text.split(' > ')
-                if len(parts) >= 2:
-                    return f"{parts[0].strip()} > {parts[1].strip()}"
-                return "Không xác định"
-
-            flight1_text = format_route(self.input_flight1.text())
-            flight2_text = format_route(self.input_flight2.text()) if self.is_round_trip else ""
-
-            note_text_cleaned = re.sub(r'<br>', '\n', note_text)
-            note_text_cleaned = re.sub(r'<[^>]+>', '', note_text_cleaned)
-
-            def extract_time_and_date(time_text):
-                time_text = re.sub(r'<[^>]+>', '', time_text)
-                parts = time_text.split('|')
-                if len(parts) >= 3:
-                    time_range = parts[2].strip()
-                    date = parts[1].strip()
-                    start_time = time_range.split('-')[0].strip() if '-' in time_range else "Không xác định"
-                    return start_time, date
-                return "Không xác định", "Không xác định"
-
-            time1, date1 = extract_time_and_date(self.input_time1.text())
-            time2, date2 = extract_time_and_date(self.input_time2.text()) if self.is_round_trip else ("", "")
+            note_content = get_note_content(airlines)
 
             if export_format == "Văn bản ngắn gọn":
-                discount = float(voucher_value) / 100
-                adult_price = base_fare_value * (1 - discount)
-                child_price = (base_fare_value * 0.7) * (1 - discount)
-
-                luggage_notes = {
-                    "Vietjet Air": "được mang 7kg xách tay và 1 kiện 20kg hành lý ký gửi",
-                    "Bamboo Airways": "được mang 7kg xách tay và 1 kiện 20kg hành lý ký gửi",
-                    "Vietnam Airlines": "được mang 10kg xách tay và 1 kiện 23kg hành lý ký gửi",
-                    "Vietravel Airlines": "được mang 7kg xách tay và 1 kiện 15kg hành lý ký gửi",
-                    "Pacific Airlines": "được mang 7kg xách tay và 1 kiện 23kg hành lý ký gửi"
-                }
-
-                luggage1 = luggage_notes.get(airlines[0], "không có thông tin hành lý")
-                luggage2 = luggage_notes.get(airlines[1] if len(airlines) > 1 else airlines[0], "không có thông tin hành lý")
-
                 suffix = " khứ hồi" if self.is_round_trip else ""
                 clipboard_content = (
-                    f"Em gửi Anh/Chị chuyến này của hãng {airline_name} và mã voucher giảm giá {voucher_value}% "
+                    f"Em gửi Anh/chị chuyến này của hãng {airline_name} và mã voucher giảm giá {voucher_value}% "
                     f"cho các chuyến bay Nội địa - Quốc tế\n\n"
-                    f"Giá vé sau khi áp mã voucher còn: {adult_price:,.0f} VNĐ/vé người lớn{suffix}\n"
-                    f"Vé trẻ em 2-11 tuổi: {child_price:,.0f} VNĐ\n"
+                    f"● Giá vé sau khi áp mã voucher còn: {adult_price:,.0f} VNĐ/vé người lớn{suffix}\n"
+                    f"● Vé trẻ em 2-11 tuổi: {child_price:,.0f} VNĐ\n"
+                    f"\n{note_content}"
                 )
 
-                if len(airlines) == 1:
-                    if airlines[0] == "Vietnam Airlines":
-                        clipboard_content += f"Tổng giá vé đã bao gồm thuế phí, suất ăn, {luggage1}"
-                    else:
-                        clipboard_content += f"Tổng giá vé đã bao gồm thuế phí, {luggage1}"
-                else:
-                    base_text = "Tổng giá vé đã bao gồm thuế phí"
-                    if "Vietnam Airlines" in airlines:
-                        base_text += ", suất ăn"
-                    if luggage1 == luggage2:
-                        clipboard_content += f"{base_text}, {luggage1}"
-                    else:
-                        clipboard_content += (
-                            f"{base_text}\n"
-                            f"Chiều đi: {luggage1}\n"
-                            f"Chiều về: {luggage2}"
-                        )
-
             elif export_format == "Văn bản hành trình":
-                discount = float(voucher_value) / 100
-                adult_price = base_fare_value * (1 - discount)
-                child_price = (base_fare_value * 0.7) * (1 - discount)
+                def format_route(route_text):
+                    clean_text = re.sub(r'<[^>]+>', '', route_text).strip()
+                    clean_text = re.sub(r'\s*[-→]\s*|\s{2,}', ' > ', clean_text)
+                    parts = clean_text.split(' > ')
+                    return f"{parts[0].strip()} > {parts[1].strip()}" if len(parts) >= 2 else "Không xác định"
 
-                luggage_notes = {
-                    "Vietjet Air": "được mang 7kg xách tay và 1 kiện 20kg hành lý ký gửi",
-                    "Bamboo Airways": "được mang 7kg xách tay và 1 kiện 20kg hành lý ký gửi",
-                    "Vietnam Airlines": "được mang 10kg xách tay và 1 kiện 23kg hành lý ký gửi",
-                    "Vietravel Airlines": "được mang 7kg xách tay và 1 kiện 15kg hành lý ký gửi",
-                    "Pacific Airlines": "được mang 7kg xách tay và 1 kiện 23kg hành lý ký gửi"
-                }
+                def extract_time_and_date(time_text):
+                    time_text = re.sub(r'<[^>]+>', '', time_text)
+                    parts = time_text.split('|')
+                    if len(parts) >= 3:
+                        time_range = parts[2].strip()
+                        date = parts[1].strip()
+                        start_time = time_range.split('-')[0].strip() if '-' in time_range else "Không xác định"
+                        return start_time, date
+                    return "Không xác định", "Không xác định"
 
-                luggage1 = luggage_notes.get(airlines[0], "không có thông tin hành lý")
-                luggage2 = luggage_notes.get(airlines[1] if len(airlines) > 1 else airlines[0], "không có thông tin hành lý")
+                flight1_text = format_route(self.input_flight1.text())
+                flight2_text = format_route(self.input_flight2.text()) if self.is_round_trip else ""
+                time1, date1 = extract_time_and_date(self.input_time1.text())
+                time2, date2 = extract_time_and_date(self.input_time2.text()) if self.is_round_trip else ("", "")
 
                 clipboard_content = (
                     f"Chuyến bay: {flight1_text} ({airline1})\n"
-                    f"Khởi hành: {time1} ngày {date1}\n"
+                    f"● Khởi hành: {time1} ngày {date1}\n"
                 )
                 if self.is_round_trip:
                     clipboard_content += (
-                        f"Chuyến 2: {flight2_text} ({airline2})\n"
-                        f"Khởi hành: {time2} ngày {date2}\n"
+                        f"Chuyến 2: {flight2_text} ({airlines[1] if len(airlines) > 1 else airline1})\n"
+                        f"● Khởi hành: {time2} ngày {date2}\n"
                     )
                 clipboard_content += (
-                    f"\nSau khi áp mã voucher giảm {voucher_value}%:\n"
-                    f"Giá vé: {adult_price:,.0f} VNĐ/người lớn | {child_price:,.0f} VNĐ/trẻ em 2-11 tuổi\n"
+                    f"\nGiá vé sau khi áp mã voucher giảm {voucher_value}%:\n"
+                    f"● {adult_price:,.0f} VNĐ/người lớn\n● {child_price:,.0f} VNĐ/trẻ em 2-11 tuổi\n"
+                    f"\n{note_content}"
                 )
-
-                if len(airlines) == 1:
-                    if airlines[0] == "Vietnam Airlines":
-                        clipboard_content += f"Tổng giá vé đã bao gồm thuế phí, suất ăn, {luggage1}"
-                    else:
-                        clipboard_content += f"Tổng giá vé đã bao gồm thuế phí, {luggage1}"
-                else:
-                    base_text = "Tổng giá vé đã bao gồm thuế phí"
-                    if "Vietnam Airlines" in airlines:
-                        base_text += ", suất ăn"
-                    if luggage1 == luggage2:
-                        clipboard_content += f"{base_text}, {luggage1}"
-                    else:
-                        clipboard_content += (
-                            f"{base_text}\n"
-                            f"Chiều đi: {luggage1}\n"
-                            f"Chiều về: {luggage2}"
-                        )
 
             else:  # Văn bản chi tiết
                 intro_text = "Em gửi anh/chị bảng tính toán chi phí chuyến bay:\n\n"
-                airline_text = f"♦️ Hãng bay: {airline_name}.\n"
-                base_fare_text = f"♦️ Giá gốc: {base_fare_value:,.0f} VNĐ/vé\n"
-                voucher_text = f"♦️ Mã voucher khuyến mãi: {voucher_value}%\n\n"
-                guest_text = f"♦️ Tổng số khách: {total_guests}\n"
-                after_voucher = "Chi phí sau khuyến mãi:\n\n"
+                trip_text = f"● Đây là chuyến bay {trip_type}.\n"
+                airline_text = f"● Hãng bay: {airline_name}.\n"
+                base_fare_text = f"● Giá gốc: {base_fare_value:,.0f} VNĐ/vé\n"
+                voucher_text = f"● Mã voucher khuyến mãi: {voucher_value}%\n"
+                guest_text = f"● Tổng số khách: {total_guests}\n"
+                after_voucher = "Chi phí sau khuyến mãi:\n"
 
                 table_data = ""
                 for row in range(self.table.rowCount()):
@@ -675,11 +617,12 @@ class TicketCalculator(QWidget):
                         quantity = int(item_quantity.text())
                         price = float(self.table.item(row, 3).text().replace(" VNĐ", "").replace(",", "").strip()) if "Miễn phí" not in self.table.item(row, 3).text() else 0
                         total = float(self.table.item(row, 4).text().replace(" VNĐ", "").replace(",", "").strip())
-                        formatted_line = f"{item_name}: {quantity} x {price:,.0f} = {total:,.0f} VNĐ\n" if price > 0 else f"{item_name}: {quantity} x Miễn phí = 0 VNĐ\n"
+                        formatted_line = f"● {item_name}: {quantity} x {price:,.0f} = {total:,.0f} VNĐ\n" if price > 0 else f"● {item_name}: {quantity} x Miễn phí = 0 VNĐ\n"
                         table_data += formatted_line
 
                 total_cost = self.result_label.text().strip()
-                clipboard_content = f"{intro_text}{trip_text}{airline_text}{base_fare_text}{guest_text}{voucher_text}{after_voucher}{table_data}\n💵 {total_cost}\n\n🎒 {note_text_cleaned}"
+                discount_text = f"● Số tiền tiết kiệm được trong chuyến bay này là: {self.discount_amount:,.0f} VNĐ.\n"
+                clipboard_content = f"{intro_text}{trip_text}{airline_text}{guest_text}{voucher_text}\n{after_voucher}{table_data}{total_cost}\n\n{note_content}"
 
             clipboard = QApplication.clipboard()
             clipboard.setText(clipboard_content)
@@ -819,11 +762,11 @@ class TicketCalculator(QWidget):
 
     def update_note_label(self, detected_airlines):
         notes = {
-            "Vietjet Air": "+ Với mỗi vé Vietjet Air, được mang theo 7kg hành lý xách tay và 1 kiện 20kg hành lý ký gửi",
-            "Bamboo Airways": "+ Với mỗi vé Bamboo Airways, được mang theo 7kg hành lý xách tay và 1 kiện 20kg hành lý ký gửi",
-            "Vietnam Airlines": "+ Với mỗi vé Vietnam Airlines, được mang theo 10kg hành lý xách tay và 1 kiện 23kg hành lý ký gửi",
-            "Vietravel Airlines": "+ Với mỗi của Vietravel Airlines, được mang theo 7kg hành lý xách tay và 1 kiện 15kg hành lý ký gửi",
-            "Pacific Airlines": "+ Với mỗi vé Pacific Airlines, được mang theo 7kg hành lý xách tay và 1 kiện 23kg hành lý ký gửi"
+            "Vietjet Air": "● Với mỗi vé Vietjet Air, được mang theo 7kg hành lý xách tay và 1 kiện 20kg hành lý ký gửi",
+            "Bamboo Airways": "● Với mỗi vé Bamboo Airways, được mang theo 7kg hành lý xách tay và 1 kiện 20kg hành lý ký gửi",
+            "Vietnam Airlines": "● Với mỗi vé Vietnam Airlines, được mang theo 10kg hành lý xách tay và 1 kiện 23kg hành lý ký gửi",
+            "Vietravel Airlines": "● Với mỗi của Vietravel Airlines, được mang theo 7kg hành lý xách tay và 1 kiện 15kg hành lý ký gửi",
+            "Pacific Airlines": "● Với mỗi vé Pacific Airlines, được mang theo 7kg hành lý xách tay và 1 kiện 23kg hành lý ký gửi"
         }
 
         discount_text = f"<span style='color:red'>Số tiền tiết kiệm được trong chuyến bay này là: {self.discount_amount:,.0f} VNĐ.</span><br>"

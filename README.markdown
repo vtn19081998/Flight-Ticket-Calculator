@@ -77,7 +77,7 @@
 
 Dưới đây là giao diện chính của ứng dụng:
 
-![Giao diện Flight Ticket Calculator](v5.1.1/Python/images/screenshot.png)
+![Giao diện Flight Ticket Calculator](v6.0.0/Python/images/screenshot.png)
 
 ## Cấu trúc mã nguồn
 
@@ -103,7 +103,7 @@ Dưới đây là giao diện chính của ứng dụng:
 ## Tác giả
 
 - **Tác giả**: Batman
-- **Phiên bản**: 5.1.1
+- **Phiên bản**: 6.0.0
 
 ## Giấy phép
 

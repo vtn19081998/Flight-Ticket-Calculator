@@ -70,7 +70,8 @@ begin
   ProcessList := [
     AppExeName, // v6.1.1
     'Flight Ticket Calculator v4.0.1.exe',
-    'Flight Ticket Calculator v5.1.1.exe'
+    'Flight Ticket Calculator v5.1.1.exe',
+    'Flight Ticket Calculator v6.1.0.exe'
   ];
 
   // Thử đóng từng tiến trình trong danh sách

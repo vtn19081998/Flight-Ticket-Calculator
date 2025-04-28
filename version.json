@@ -1,5 +1,5 @@
 {
-  "version": "6.2.1",
-  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/v6.2.1/Flight.Ticket.Calculator.exe",
-  "release_notes": "  + Sửa lỗi nhận diện sai Giá vé gốc\n  + Cập nhật hiển thị phần Ghi chú"
+  "version": "6.2.2",
+  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/v6.2.2/Flight.Ticket.Calculator.exe",
+  "release_notes": "  + Cập nhật chức năng lịch sử"
 }

@@ -1,5 +1,5 @@
 {
-  "version": "6.2.6",
-  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/v6.2.6/Flight.Ticket.Calculator.exe",
-  "release_notes": "  + Bản cập nhật sửa lỗi khẩn cấp"
+  "version": "6.2.7",
+  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/v6.2.7/Flight.Ticket.Calculator.exe",
+  "release_notes": "  + Cập nhật sân bay MRQ (Đài Loan)\n  + Cập nhật tương thích với Windows 11\n  + Sửa lỗi khôi phục Lịch sử\n  + Cho phép mở nhiều tài khoản trên 1 máy tính"
 }

@@ -1,3 +1,40 @@
 {
-    "message": "Nội dung thông báo tùy chỉnh từ GitHub!"
+  "message": {
+    "title": "🛫 Flight Ticket Calculator - Thông báo từ bộ phận phát triển",
+    "sections": [
+      {
+        "icon": "🙏",
+        "header": "Lời cảm ơn",
+        "content": "Thay mặt bộ phận phát triển ứng dụng Flight Ticket Calculator (FTC), xin chân thành cảm ơn quý anh/chị đã tin tưởng và sử dụng phần mềm này."
+      },
+      {
+        "icon": "🔄",
+        "header": "Cập nhật hệ thống",
+        "content": "Chúng tôi luôn nỗ lực cập nhật thường xuyên để nâng cao độ chính xác khi xử lý các chuyến bay."
+      },
+      {
+        "icon": "📊",
+        "header": "Mức độ hoàn thiện",
+        "content": [
+          "✔️ Các chuyến bay nội địa đã được cập nhật chính xác đến **99%**.",
+          "✔️ Các chuyến bay quốc tế (bay thẳng, đi/đến từ Việt Nam) đã cập nhật chính xác đến **90%**."
+        ]
+      },
+      {
+        "icon": "⚠️",
+        "header": "Cảnh báo",
+        "content": "Hiện chúng tôi đang tiếp tục cập nhật các chuyến bay quá cảnh. Quý anh/chị **tạm thời không nên sử dụng** phần mềm với các chuyến bay dạng này để tránh sai sót."
+      },
+      {
+        "icon": "📬",
+        "header": "Báo lỗi",
+        "content": "Khi phát hiện lỗi trên phần mềm, xin vui lòng liên hệ Telegram: **@batman1397** để được hỗ trợ sớm nhất."
+      },
+      {
+        "icon": "❤️",
+        "header": "Trân trọng cảm ơn!",
+        "content": "Bộ phận phát triển Flight Ticket Calculator"
+      }
+    ]
+  }
 }

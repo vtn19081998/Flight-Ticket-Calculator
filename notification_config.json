@@ -1,6 +1,6 @@
 {
   "message": {
-    "title": "🛫 Flight Ticket Calculator - Thông báo từ bộ phận phát triển",
+    "title": "🛫 Flight Ticket Calculator - Thông báo",
     "sections": [
       {
         "icon": "🙏",
@@ -16,19 +16,19 @@
         "icon": "📊",
         "header": "Mức độ hoàn thiện",
         "content": [
-          "✔️ Các chuyến bay nội địa đã được cập nhật chính xác đến **99%**.",
-          "✔️ Các chuyến bay quốc tế (bay thẳng, đi/đến từ Việt Nam) đã cập nhật chính xác đến **90%**."
+          "✔️ Các chuyến bay nội địa đã được cập nhật chính xác đến 99%",
+          "✔️ Các chuyến bay quốc tế (bay thẳng, đi/đến từ Việt Nam) đã cập nhật chính xác đến 90%."
         ]
       },
       {
         "icon": "⚠️",
         "header": "Cảnh báo",
-        "content": "Hiện chúng tôi đang tiếp tục cập nhật các chuyến bay quá cảnh. Quý anh/chị **tạm thời không nên sử dụng** phần mềm với các chuyến bay dạng này để tránh sai sót."
+        "content": "Hiện chúng tôi đang tiếp tục cập nhật các chuyến bay quá cảnh. Quý anh/chị tạm thời không nên sử dụng phần mềm với các chuyến bay dạng này để tránh sai sót."
       },
       {
         "icon": "📬",
         "header": "Báo lỗi",
-        "content": "Khi phát hiện lỗi trên phần mềm, xin vui lòng liên hệ Telegram: **@batman1397** để được hỗ trợ sớm nhất."
+        "content": "Khi phát hiện lỗi trên phần mềm, xin vui lòng liên hệ Telegram: @batman1397 để được hỗ trợ sớm nhất."
       },
       {
         "icon": "❤️",

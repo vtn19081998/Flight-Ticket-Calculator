@@ -1,5 +1,5 @@
 {
-  "version": "6.3.3",
+  "version": "6.3.4",
   "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/v6.3.2/Flight.Ticket.Calculator.exe",
   "release_notes": "  + Sửa lỗi ứng dụng bị thoát đột ngột\n  + Cập nhật cho phép sửa đổi tên đại lý\n  + Cập nhật phân biệt chuyến bay của VNA và Pacific\n  + Cập nhật thuật toán tải các chuyến bay và hãng bay mới từ server"
 }

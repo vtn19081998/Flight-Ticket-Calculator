@@ -2,7 +2,7 @@
   "version": "6.3.5",
   "files": [
     {
-      "path": "images/icon.png",
+      "path": "images",
       "url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/test/Flight.Ticket.Calculator.v8.0.1.exe",
       "sha256": "<SHA256_HASH>",
       "action": "add"

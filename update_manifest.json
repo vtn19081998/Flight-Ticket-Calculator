@@ -1,0 +1,31 @@
+{
+  "version": "6.3.5",
+  "files": [
+    {
+      "path": "login.py",
+      "url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/v6.3.5/login.py",
+      "sha256": "<SHA256_HASH>",
+      "action": "replace"
+    },
+    {
+      "path": "data/new_config.json",
+      "url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/v6.3.5/new_config.json",
+      "sha256": "<SHA256_HASH>",
+      "action": "add"
+    },
+    {
+      "path": "data/old_config.json",
+      "action": "delete"
+    },
+    {
+      "path": "images",
+      "action": "delete"
+    },
+    {
+      "path": "images/icon.png",
+      "url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/v6.3.5/icon.png",
+      "sha256": "<SHA256_HASH>",
+      "action": "add"
+    }
+  ]
+}

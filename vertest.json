@@ -1,5 +1,6 @@
 {
   "version": "7.0.5",
   "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/test/Flight.Ticket.Calculator.v7.0.5.exe",
-  "release_notes": "  + Sửa lỗi ứng dụng bị thoát đột ngột\n  + Cập nhật cho phép sửa đổi tên đại lý\n  + Cập nhật phân biệt chuyến bay của VNA và Pacific\n  + Cập nhật thuật toán tải các chuyến bay và hãng bay mới từ server"
+  "release_notes": "  + Sửa lỗi ứng dụng bị thoát đột ngột\n  + Cập nhật cho phép sửa đổi tên đại lý\n  + Cập nhật phân biệt chuyến bay của VNA và Pacific\n  + Cập nhật thuật toán tải các chuyến bay và hãng bay mới từ server",
+  "release_date": "2025-05-15",
 }

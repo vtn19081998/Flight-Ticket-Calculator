@@ -2,6 +2,6 @@
   "version": "6.3.5",
   "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/test/update.zip",
   "release_notes": "Cải tiến giao diện và sửa lỗi.",
-  "sha256_hash": "abc123...",
+  "sha256_hash": "",
   "executable": "Flight Ticket Calculator.exe"
 }

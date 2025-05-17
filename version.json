@@ -1,5 +1,6 @@
 {
   "version": "7.0.1",
-  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/auto-update/auto-update.exe",
+  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/test/update1.zip",
   "release_notes": "Cải tiến giao diện và sửa lỗi.",
+  "executable": "Flight Ticket Calculator.exe"
 }

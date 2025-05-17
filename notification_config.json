@@ -5,22 +5,12 @@
       {
         "icon": "⚠️",
         "header": "Cập nhật ngay",
-        "content": "Hiện tại, bản v7.0.0 đang dính lỗi nghiêm trọng không thể tự động cập nhật. Quý anh/chị hãy chủ động gỡ bản này và cài lại bản mới tại địa chỉ:",
-        "link": {
-          "label": "bit.ly/sualoi-1",
-          "url": "https://bit.ly/sualoi-1"
-        },
-        "note": "Hãy nhớ thoát ứng dụng trước khi cập nhật."
+        "content": "Hiện tại, bản v7.0.0 đang dính lỗi nghiêm trọng không thể tự động cập nhật. Quý anh/chị hãy chủ động gỡ bản này và cài lại bản mới tại địa chỉ: bit.ly/sualoi-1. Hãy nhớ thoát ứng dụng trước khi cập nhật"
       },
       {
         "icon": "📬",
         "header": "Báo lỗi",
-        "content": "Khi phát hiện lỗi trên phần mềm, xin vui lòng liên hệ Telegram:",
-        "link": {
-          "label": "@batman1397",
-          "url": "https://t.me/batman1397"
-        },
-        "note": "Để được hỗ trợ sớm nhất."
+        "content": "Khi phát hiện lỗi trên phần mềm, xin vui lòng liên hệ Telegram: @batman1397 để được hỗ trợ sớm nhất."
       },
       {
         "icon": "❤️",

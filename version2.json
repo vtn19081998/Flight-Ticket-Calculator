@@ -1,6 +1,6 @@
 {
-  "version": "7.0.1",
-  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/test/update1.zip",
-  "release_notes": "Cải tiến giao diện và sửa lỗi.",
-  "executable": "Flight Ticket Calculator.exe"
+    "version": "7.0.1",
+    "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/test/update1.zip",
+    "release_notes": "Version 1.1.0\n- Added support for new ticket types\n- Improved performance for large datasets\n- Fixed minor bugs in calculation module",
+    "executable": "Flight Ticket Calculator.exe"
 }

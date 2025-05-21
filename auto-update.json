@@ -1,5 +1,5 @@
 {
-  "version": "7.0.2",
-  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/data/update_v7.0.3.zip",
+  "version": "7.0.4",
+  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/data/update_v7.0.4.zip",
   "release_notes": "\n  + Tối ưu các thông báo để thao tác với ứng dụng nhanh hơn\n  + Tối ưu cơ chế tải file cache từ server\n  + Cập nhật loại máy bay ATR, Boeing 789 và Comac 909"
 }

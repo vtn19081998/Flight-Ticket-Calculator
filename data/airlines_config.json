@@ -6,7 +6,9 @@
       "logo": "images/vn_logo.png",
       "luggage": "10kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["VietnamAirlines"]
+      "aliases": ["VietnamAirlines"],
+      "background_image": "images/vietnam_airlines_bg.png",
+      "background_color": "#D6E8F8"
     },
     {
       "name": "Vietjet Air",
@@ -14,7 +16,9 @@
       "logo": "images/vj_logo.png",
       "luggage": "7kg xách tay và 1 kiện 20kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["VietJet"]
+      "aliases": ["VietJet"],
+      "background_image": "images/vietjet_air_bg.png",
+      "background_color": "#FFE4E9"
     },
     {
       "name": "Bamboo Airways",
@@ -22,7 +26,9 @@
       "logo": "images/qh_logo.png",
       "luggage": "7kg xách tay và 1 kiện 20kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["Bamboo"]
+      "aliases": ["Bamboo"],
+      "background_image": "images/bamboo_airways_bg.png",
+      "background_color": "#DDF7E3"
     },
     {
       "name": "Pacific Airlines",
@@ -30,7 +36,9 @@
       "logo": "images/bl_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["Jetstar Pacific", "Jetstar"]
+      "aliases": ["Jetstar Pacific", "Jetstar"],
+      "background_image": "images/pacific_airlines_bg.png",
+      "background_color": "#FFF0E0"
     },
     {
       "name": "Vietravel Airlines",
@@ -38,7 +46,9 @@
       "logo": "images/vu_logo.png",
       "luggage": "7kg xách tay và 1 kiện 15kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["Vietravel"]
+      "aliases": ["Vietravel"],
+      "background_image": "images/vietravel_airlines_bg.png",
+      "background_color": "#FFF8E1"
     },
     {
       "name": "Singapore Airlines",

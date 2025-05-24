@@ -1,5 +1,5 @@
 {
-  "version": "7.0.7",
-  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/data/update_v7.0.7.zip",
-  "release_notes": "\n  + Điều chỉnh giao diện chuyến bay tương ứng với hãng bay\n  + Sửa lỗi tự động xóa Giá vé gốc sau khi chụp màn hình"
+  "version": "8.1.0",
+  "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/data/update_v8.1.0.zip",
+  "release_notes": "\n  + Hỗ trợ chuyến bay quá cảnh (nối chuyến)"
 }

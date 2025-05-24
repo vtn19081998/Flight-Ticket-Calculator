@@ -22,6 +22,7 @@
     {"name": "Đồng Hới", "country": "Vietnam", "code": "VDH", "city_name": "Đồng Hới", "aliases": ["Donghoi", "DH"]},
     {"name": "Chu Lai", "country": "Vietnam", "code": "VCL", "city_name": "Tam Kỳ", "aliases": ["Chulai", "Tamky", "CL"]},
     {"name": "Cà Mau", "country": "Vietnam", "code": "CAH", "city_name": "Cà Mau", "aliases": ["Camau", "CM"]},
+	{"name": "Vientiane", "country": "Lào", "code": "VTE", "city_name": "Vientiane", "aliases": ["Vientiane", "VTE"]},
     {"name": "Heathrow", "country": "United Kingdom", "code": "LHR", "city_name": "London", "aliases": ["LHR"]},
     {"name": "Gatwick", "country": "United Kingdom", "code": "LGW", "city_name": "London", "aliases": ["LGW"]},
     {"name": "Indira Gandhi", "country": "India", "code": "DEL", "city_name": "Delhi", "aliases": ["New Delhi"]},
@@ -78,11 +79,6 @@
 	{"name": "Moscow Sheremetyevo", "country": "Russia", "code": "SVO", "city_name": "Moscow", "aliases": ["SVO"]},
 	{"name": "Istanbul", "country": "Turkey", "code": "IST", "city_name": "Istanbul", "aliases": ["IST"]},
 	{"name": "Haikou", "country": "China", "code": "HAK", "city_name": "Haikou", "aliases": ["HAK"]},
-	{"name": "Taichung", "country": "Taiwan", "code": "RMQ", "city_name": "Taichung", "aliases": ["RMQ", "Taichung"]},
-	{"name": "Chongqing", "country": "China", "code": "CKG", "city_name": "Chongqing", "aliases": ["CKG"]},
-    {"name": "Chengdu Shuangliu", "country": "China", "code": "CTU", "city_name": "Chengdu", "aliases": ["Chengdu Shuangliu", "CTU"]},
-    {"name": "Washington Dulles", "country": "United States", "code": "IAD", "city_name": "Washington, D.C", "aliases": ["IAD", "Washington, D.C"]},
-	{"name": "Moscow Domodedovo", "country": "Russia", "code": "DME", "city_name": "Moscow", "aliases": ["DME", "Domodedovo"]},
-	{"name": "Moscow Vnukovo", "country": "Russia", "code": "VKO", "city_name": "Moscow", "aliases": ["VKO", "Vnukovo"]}
+	{"name": "Taichung", "country": "Taiwan", "code": "RMQ", "city_name": "Taichung", "aliases": ["RMQ", "Taichung"]}
   ]
 }

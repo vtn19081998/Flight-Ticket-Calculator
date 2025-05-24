@@ -1,1 +1,22 @@
-
+{
+  "message": {
+    "title": "🛫 BẢN CẬP NHẬT QUAN TRỌNG",
+    "sections": [
+      {
+        "icon": "⚠️",
+        "header": "Cập nhật ngay",
+        "content": "Chúng tôi đã cập nhật phiên bản v8.1.0 hỗ trợ chuyến bay quá cảnh. Anh/chị có thể cập nhật ngay để sử dụng"
+      },
+      {
+        "icon": "📬",
+        "header": "Báo lỗi",
+        "content": "Đây là phiên bản lớn, không thể tránh khỏi sai sót, khi phát hiện lỗi, xin vui lòng liên hệ Telegram: @batman1397 để chúng tôi cải tiến sớm nhất."
+      },
+      {
+        "icon": "❤️",
+        "header": "Trân trọng cảm ơn!",
+        "content": "Bộ phận phát triển Flight Ticket Calculator"
+      }
+    ]
+  }
+}

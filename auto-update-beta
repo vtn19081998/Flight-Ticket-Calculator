@@ -1,5 +1,5 @@
 {
-  "version": "8.0.0",
+  "version": "8.0.0-beta",
   "download_url": "https://github.com/vtn19081998/Flight-Ticket-Calculator/releases/download/data/update_v8.0.0-beta.zip",
   "release_notes": "\n  + Hỗ trợ các chuyến bay quá cảnh (tối đa 2 chặng mỗi chiều)\n  + Thêm định dạng xuất văn bản cho các chuyến bay Quốc tế (loại bỏ chi tiết hành lý)"
 }

@@ -79,6 +79,25 @@
 	{"name": "Moscow Sheremetyevo", "country": "Russia", "code": "SVO", "city_name": "Moscow", "aliases": ["SVO"]},
 	{"name": "Istanbul", "country": "Turkey", "code": "IST", "city_name": "Istanbul", "aliases": ["IST"]},
 	{"name": "Haikou", "country": "China", "code": "HAK", "city_name": "Haikou", "aliases": ["HAK"]},
-	{"name": "Taichung", "country": "Taiwan", "code": "RMQ", "city_name": "Taichung", "aliases": ["RMQ", "Taichung"]}
+	{"name": "Taichung", "country": "Taiwan", "code": "RMQ", "city_name": "Taichung", "aliases": ["RMQ", "Taichung"]},
+	{"name": "Amsterdam", "country": "Netherlands", "code": "AMS", "city_name": "Amsterdam", "aliases": ["AMS"]},
+    {"name": "Chongqing", "country": "China", "code": "CKG", "city_name": "Chongqing", "aliases": ["CKG"]},
+    {"name": "Chengdu Shuangliu", "country": "China", "code": "CTU", "city_name": "Chengdu", "aliases": ["Chengdu Shuangliu", "CTU"]},
+    {"name": "Washington Dulles", "country": "United States", "code": "IAD", "city_name": "Washington, D.C", "aliases": ["IAD", "Washington, D.C"]},
+	{"name": "Moscow Domodedovo", "country": "Russia", "code": "DME", "city_name": "Moscow", "aliases": ["DME", "Domodedovo"]},
+	{"name": "Moscow Vnukovo", "country": "Russia", "code": "VKO", "city_name": "Moscow", "aliases": ["VKO", "Vnukovo"]},
+	{"name": "Hangzhou", "country": "China", "code": "HGH", "city_name": "Hangzhou", "aliases": ["HGH"]},
+	{"name": "Urumqi", "country": "China", "code": "URC", "city_name": "Urumqi", "aliases": ["URC", "Ürümqi", "Wulumuqi"]},
+	{"name": "Xi An", "country": "China", "code": "XIY", "city_name": "Xi An", "aliases": ["Xi An", "XIY"]},
+	{"name": "Barcelona", "country": "Spain", "code": "BCN", "city_name": "Barcelona", "aliases": ["Barcelona", "BCN"]},
+	{"name": "Geneva", "country": "Switzerland", "code": "GVA", "city_name": "Geneva", "aliases": ["GVA", "Genève", "Genf"]},
+	{"name": "Vienna", "country": "Austria", "code": "VIE", "city_name": "Vienna", "aliases": ["Vienna", "VIE"]},
+	{"name": "Munich", "country": "Germany", "code": "MUC", "city_name": "Munich", "aliases": ["MUC"]},
+	{"name": "Macau", "country": "Macau", "code": "MFM", "city_name": "Macau", "aliases": ["Macau", "MFM"]},
+    {"name": "Austin", "country": "United States", "code": "AUS", "city_name": "Austin", "aliases": ["AUS"]},
+    {"name": "Dallas", "country": "United States", "code": "DFW", "city_name": "Dallas", "aliases": ["DFW"]},
+	{"name": "Seattle", "country": "United States", "code": "SEA", "city_name": "Seattle", "aliases": ["SEA"]},
+	{"name": "Minneapolis", "country": "United States", "code": "MSP", "city_name": "Minneapolis", "aliases": ["MSP"]},
+	{"name": "Zurich", "country": "Switzerland", "code": "ZRH", "city_name": "Zurich", "aliases": ["ZRH", "Zürich"]}
   ]
 }

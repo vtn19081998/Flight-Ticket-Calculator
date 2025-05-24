@@ -345,7 +345,79 @@
       "luggage": "7kg xách tay, không bao gồm hành lý ký gửi",
       "meal": false,
       "aliases": ["GuangxiAir"]
-    }
+    },
+	{
+	  "name": "Jetstar Airways",
+	  "code": "JQ",
+	  "logo": "images/jq_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": false,
+	  "aliases": ["JetstarAir"],
+	  "background_image": "images/jetstar_airways_bg.png",
+	  "background_color": "#F5F6F5"
+	},
+	{
+	  "name": "Austrian Airlines",
+	  "code": "OS",
+	  "logo": "images/os_logo.png",
+	  "luggage": "8kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["AustrianAir"],
+	  "background_image": "images/austrian_airlines_bg.png",
+	  "background_color": "#F4E8E9"
+	},
+	{
+	  "name": "KLM Royal Dutch Airlines",
+	  "code": "KL",
+	  "logo": "images/kl_logo.png",
+	  "luggage": "12kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["KLM"],
+	  "background_image": "images/klm_bg.png",
+	  "background_color": "#B2D7EC"
+	},
+	{
+	  "name": "Air Macau",
+	  "code": "NX",
+	  "logo": "images/nx_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 25kg hành lý ký gửi",
+	  "meal": false,
+	  "aliases": ["AirMacau"],
+	  "background_image": "images/air_macau_bg.png",
+	  "background_color": "#E6F0F6"
+	},
+	{
+	  "name": "Myanmar Airways",
+	  "code": "UB",
+	  "logo": "images/ub_logo.png",
+	  "luggage": "7kg xách tay và 30kg ký gửi",
+	  "meal": false,
+	  "aliases": ["MyanmarAir"]
+	},
+	{
+	  "name": "American Airlines",
+	  "code": "AA",
+	  "logo": "images/aa_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["AmericanAir"]
+	},
+	{
+	  "name": "Delta Air Lines",
+	  "code": "DL",
+	  "logo": "images/dl_logo.png",
+	  "luggage": "7kg xách tay và 2 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["Delta"]
+	},
+	{
+	  "name": "Swiss International Air Lines",
+	  "code": "LX",
+	  "logo": "images/lx_logo.png",
+	  "luggage": "8kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["SwissAir"]
+	}
   ],
   "child_price_ratio": 0.7
 }

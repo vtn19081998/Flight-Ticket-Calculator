@@ -98,6 +98,9 @@
     {"name": "Dallas", "country": "United States", "code": "DFW", "city_name": "Dallas", "aliases": ["DFW"]},
 	{"name": "Seattle", "country": "United States", "code": "SEA", "city_name": "Seattle", "aliases": ["SEA"]},
 	{"name": "Minneapolis", "country": "United States", "code": "MSP", "city_name": "Minneapolis", "aliases": ["MSP"]},
-	{"name": "Zurich", "country": "Switzerland", "code": "ZRH", "city_name": "Zurich", "aliases": ["ZRH", "Zürich"]}
+	{"name": "Zurich", "country": "Switzerland", "code": "ZRH", "city_name": "Zurich", "aliases": ["ZRH", "Zürich"]},
+	{"name": "Montreal", "country": "Canada", "code": "YUL", "city_name": "Montreal", "aliases": ["YUL", "Montréal"]},
+	{"name": "Boston", "country": "United States", "code": "BOS", "city_name": "Boston", "aliases": ["BOS"]},
+	{"name": "Toronto", "country": "Canada", "code": "YYZ", "city_name": "Toronto", "aliases": ["YYZ"]}
   ]
 }

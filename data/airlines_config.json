@@ -56,7 +56,9 @@
       "logo": "images/sq_logo.png",
       "luggage": "7kg xách tay và 30kg ký gửi",
       "meal": true,
-      "aliases": ["SingaporeAir"]
+      "aliases": ["SingaporeAir"],
+      "background_image": "images/singapore_airlines_bg.png",
+      "background_color": "#F2E2C3"
     },
     {
       "name": "Thai Airways",
@@ -64,7 +66,9 @@
       "logo": "images/tg_logo.png",
       "luggage": "7kg xách tay và 1 kiện 30kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["ThaiAir"]
+      "aliases": ["ThaiAir"],
+      "background_image": "images/thai_airways_bg.png",
+      "background_color": "#E6D4F2"
     },
     {
       "name": "Japan Airlines",
@@ -72,7 +76,9 @@
       "logo": "images/jl_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["JAL"]
+      "aliases": ["JAL"],
+      "background_image": "images/japan_airlines_bg.png",
+      "background_color": "#F8D7DA"
     },
     {
       "name": "Cathay Pacific",
@@ -80,7 +86,9 @@
       "logo": "images/cx_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["Cathay"]
+      "aliases": ["Cathay"],
+      "background_image": "images/cathay_pacific_bg.png",
+      "background_color": "#D8ECE6"
     },
     {
       "name": "Emirates",
@@ -88,7 +96,9 @@
       "logo": "images/ek_logo.png",
       "luggage": "7kg xách tay và 30kg ký gửi",
       "meal": true,
-      "aliases": ["EmiratesAir"]
+      "aliases": ["EmiratesAir"],
+      "background_image": "images/emirates_bg.png",
+      "background_color": "#E8ECEF"
     },
     {
       "name": "Qatar Airways",
@@ -96,7 +106,9 @@
       "logo": "images/qr_logo.png",
       "luggage": "7kg xách tay và 30kg ký gửi",
       "meal": true,
-      "aliases": ["QatarAir"]
+      "aliases": ["QatarAir"],
+      "background_image": "images/qatar_airways_bg.png",
+      "background_color": "#D9B7C3"
     },
     {
       "name": "Korean Air",
@@ -104,7 +116,9 @@
       "logo": "images/ke_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["KoreanAir"]
+      "aliases": ["KoreanAir"],
+      "background_image": "images/korean_air_bg.png",
+      "background_color": "#B3D7F2"
     },
     {
       "name": "All Nippon Airways",
@@ -112,7 +126,9 @@
       "logo": "images/nh_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["ANA"]
+      "aliases": ["ANA"],
+      "background_image": "images/ana_bg.png",
+      "background_color": "#D4E4F7"
     },
     {
       "name": "Lufthansa",
@@ -120,7 +136,9 @@
       "logo": "images/lh_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["LufthansaAir"]
+      "aliases": ["LufthansaAir"],
+      "background_image": "images/lufthansa_bg.png",
+      "background_color": "#F5E8B7"
     },
     {
       "name": "Air France",
@@ -128,7 +146,9 @@
       "logo": "images/af_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["AirFrance"]
+      "aliases": ["AirFrance"],
+      "background_image": "images/air_france_bg.png",
+      "background_color": "#B3C7E6"
     },
     {
       "name": "Qantas",
@@ -136,7 +156,9 @@
       "logo": "images/qf_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["QantasAir"]
+      "aliases": ["QantasAir"],
+      "background_image": "images/qantas_bg.png",
+      "background_color": "#F5D5D5"
     },
     {
       "name": "China Southern Airlines",
@@ -144,7 +166,9 @@
       "logo": "images/cz_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["ChinaSouthern"]
+      "aliases": ["ChinaSouthern"],
+      "background_image": "images/china_southern_bg.png",
+      "background_color": "#F2D4D4"
     },
     {
       "name": "Cambodia Angkor Air",
@@ -152,7 +176,9 @@
       "logo": "images/k6_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["AngkorAir"]
+      "aliases": ["AngkorAir"],
+      "background_image": "images/cambodia_angkor_air_bg.png",
+      "background_color": "#F7E4C3"
     },
     {
       "name": "Lao Airlines",
@@ -160,7 +186,9 @@
       "logo": "images/qv_logo.png",
       "luggage": "7kg xách tay và 1 kiện 20kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["LaoAir"]
+      "aliases": ["LaoAir"],
+      "background_image": "images/lao_airlines_bg.png",
+      "background_color": "#D8E8D2"
     },
     {
       "name": "Bangkok Airways",
@@ -168,7 +196,9 @@
       "logo": "images/pg_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["BangkokAir"]
+      "aliases": ["BangkokAir"],
+      "background_image": "images/bangkok_airways_bg.png",
+      "background_color": "#B3E3F2"
     },
     {
       "name": "Garuda Indonesia",
@@ -176,7 +206,9 @@
       "logo": "images/ga_logo.png",
       "luggage": "7kg xách tay và 30kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["Garuda"]
+      "aliases": ["Garuda"],
+      "background_image": "images/garuda_indonesia_bg.png",
+      "background_color": "#D1E8E2"
     },
     {
       "name": "Malaysia Airlines",
@@ -184,7 +216,9 @@
       "logo": "images/mh_logo.png",
       "luggage": "7kg xách tay và 20kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["MalaysiaAir"]
+      "aliases": ["MalaysiaAir"],
+      "background_image": "images/malaysia_airlines_bg.png",
+      "background_color": "#B3D7E6"
     },
     {
       "name": "Philippine Airlines",
@@ -192,7 +226,9 @@
       "logo": "images/pr_logo.png",
       "luggage": "7kg xách tay và 1 kiện 30kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["PhilippineAir"]
+      "aliases": ["PhilippineAir"],
+      "background_image": "images/philippine_airlines_bg.png",
+      "background_color": "#F2E8C3"
     },
     {
       "name": "Myanmar Airways International",
@@ -200,7 +236,9 @@
       "logo": "images/8m_logo.png",
       "luggage": "7kg xách tay và 30kg ký gửi",
       "meal": false,
-      "aliases": ["MyanmarAir"]
+      "aliases": ["MyanmarAir"],
+      "background_image": "images/myanmar_airways_bg.png",
+      "background_color": "#F7E4B7"
     },
     {
       "name": "Air China",
@@ -208,7 +246,9 @@
       "logo": "images/ca_logo.png",
       "luggage": "5kg xách tay và 2 kiện 23kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["AirChina"]
+      "aliases": ["AirChina"],
+      "background_image": "images/air_china_bg.png",
+      "background_color": "#F2D4D4"
     },
     {
       "name": "Sichuan Airlines",
@@ -216,7 +256,9 @@
       "logo": "images/3u_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["SichuanAir"]
+      "aliases": ["SichuanAir"],
+      "background_image": "images/sichuan_airlines_bg.png",
+      "background_color": "#F7D4C3"
     },
     {
       "name": "Xiamen Airlines",
@@ -224,7 +266,9 @@
       "logo": "images/mf_logo.png",
       "luggage": "5kg xách tay và 2 kiện 23kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["XiamenAir"]
+      "aliases": ["XiamenAir"],
+      "background_image": "images/xiamen_airlines_bg.png",
+      "background_color": "#D8E4F2"
     },
     {
       "name": "China Airlines",
@@ -232,7 +276,9 @@
       "logo": "images/ci_logo.png",
       "luggage": "7kg xách tay và 2 kiện 23kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["ChinaAir"]
+      "aliases": ["ChinaAir"],
+      "background_image": "images/china_airlines_bg.png",
+      "background_color": "#E6D7F2"
     },
     {
       "name": "Jeju Air",
@@ -240,7 +286,9 @@
       "logo": "images/7c_logo.png",
       "luggage": "7kg xách tay và 1 kiện 15kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["JejuAir"]
+      "aliases": ["JejuAir"],
+      "background_image": "images/jeju_air_bg.png",
+      "background_color": "#F2E8D4"
     },
     {
       "name": "Asiana Airlines",
@@ -248,7 +296,9 @@
       "logo": "images/oz_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["Asiana"]
+      "aliases": ["Asiana"],
+      "background_image": "images/asiana_airlines_bg.png",
+      "background_color": "#B7D7F2"
     },
     {
       "name": "China Eastern Airlines",
@@ -256,7 +306,9 @@
       "logo": "images/mu_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["ChinaEastern"]
+      "aliases": ["ChinaEastern"],
+      "background_image": "images/china_eastern_bg.png",
+      "background_color": "#D4E8F2"
     },
     {
       "name": "EVA Air",
@@ -264,7 +316,9 @@
       "logo": "images/br_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["EVAAir"]
+      "aliases": ["EVAAir"],
+      "background_image": "images/eva_air_bg.png",
+      "background_color": "#D1E8D2"
     },
     {
       "name": "Air India",
@@ -272,7 +326,9 @@
       "logo": "images/ai_logo.png",
       "luggage": "7kg xách tay và 1 kiện 25kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["AirIndia"]
+      "aliases": ["AirIndia"],
+      "background_image": "images/air_india_bg.png",
+      "background_color": "#F7D4B7"
     },
     {
       "name": "Shenzhen Airlines",
@@ -280,7 +336,9 @@
       "logo": "images/zh_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["ShenzhenAir"]
+      "aliases": ["ShenzhenAir"],
+      "background_image": "images/shenzhen_airlines_bg.png",
+      "background_color": "#F2D7D4"
     },
     {
       "name": "Scoot",
@@ -288,7 +346,9 @@
       "logo": "images/tr_logo.png",
       "luggage": "7kg xách tay và 1 kiện 30kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["ScootAir"]
+      "aliases": ["ScootAir"],
+      "background_image": "images/scoot_bg.png",
+      "background_color": "#F7E8B7"
     },
     {
       "name": "Aeroflot",
@@ -296,7 +356,9 @@
       "logo": "images/su_logo.png",
       "luggage": "10kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["AeroflotAir"]
+      "aliases": ["AeroflotAir"],
+      "background_image": "images/aeroflot_bg.png",
+      "background_color": "#D4E8F7"
     },
     {
       "name": "Cebu Pacific",
@@ -304,7 +366,9 @@
       "logo": "images/5j_logo.png",
       "luggage": "7kg xách tay, không bao gồm hành lý ký gửi",
       "meal": false,
-      "aliases": ["CebuPacific"]
+      "aliases": ["CebuPacific"],
+      "background_image": "images/cebu_pacific_bg.png",
+      "background_color": "#F2E8C3"
     },
     {
       "name": "Thai AirAsia",
@@ -312,7 +376,9 @@
       "logo": "images/fd_logo.png",
       "luggage": "7kg xách tay và 1 kiện 20kg hành lý ký gửi",
       "meal": false,
-      "aliases": ["ThaiAirAsia"]
+      "aliases": ["ThaiAirAsia"],
+      "background_image": "images/thai_airasia_bg.png",
+      "background_color": "#F7D4C3"
     },
     {
       "name": "Starlux Airlines",
@@ -320,7 +386,9 @@
       "logo": "images/jx_logo.png",
       "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["Starlux"]
+      "aliases": ["Starlux"],
+      "background_image": "images/starlux_airlines_bg.png",
+      "background_color": "#D1E4E8"
     },
     {
       "name": "AirAsia Cambodia",
@@ -328,7 +396,9 @@
       "logo": "images/kt_logo.png",
       "luggage": "7kg xách tay, không bao gồm hành lý ký gửi",
       "meal": false,
-      "aliases": ["AirAsiaCambodia"]
+      "aliases": ["AirAsiaCambodia"],
+      "background_image": "images/airasia_cambodia_bg.png",
+      "background_color": "#F7E4C3"
     },
     {
       "name": "Turkish Airlines",
@@ -336,7 +406,9 @@
       "logo": "images/tk_logo.png",
       "luggage": "7kg xách tay và 23kg hành lý ký gửi",
       "meal": true,
-      "aliases": ["TurkishAir"]
+      "aliases": ["TurkishAir"],
+      "background_image": "images/turkish_airlines_bg.png",
+      "background_color": "#F2D4D4"
     },
     {
       "name": "Guangxi Beibu Gulf Airlines",
@@ -344,79 +416,129 @@
       "logo": "images/gx_logo.png",
       "luggage": "7kg xách tay, không bao gồm hành lý ký gửi",
       "meal": false,
-      "aliases": ["GuangxiAir"]
+      "aliases": ["GuangxiAir"],
+      "background_image": "images/guangxi_airlines_bg.png",
+      "background_color": "#D8E8D2"
+    },
+    {
+      "name": "Jetstar Airways",
+      "code": "JQ",
+      "logo": "images/jq_logo.png",
+      "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+      "meal": false,
+      "aliases": ["JetstarAir"],
+      "background_image": "images/jetstar_airways_bg.png",
+      "background_color": "#F5F6F5"
+    },
+    {
+      "name": "Austrian Airlines",
+      "code": "OS",
+      "logo": "images/os_logo.png",
+      "luggage": "8kg xách tay và 1 kiện 23kg hành lý ký gửi",
+      "meal": true,
+      "aliases": ["AustrianAir"],
+      "background_image": "images/austrian_airlines_bg.png",
+      "background_color": "#F4E8E9"
+    },
+    {
+      "name": "KLM Royal Dutch Airlines",
+      "code": "KL",
+      "logo": "images/kl_logo.png",
+      "luggage": "12kg xách tay và 1 kiện 23kg hành lý ký gửi",
+      "meal": true,
+      "aliases": ["KLM"],
+      "background_image": "images/klm_bg.png",
+      "background_color": "#B2D7EC"
+    },
+    {
+      "name": "Air Macau",
+      "code": "NX",
+      "logo": "images/nx_logo.png",
+      "luggage": "7kg xách tay và 1 kiện 25kg hành lý ký gửi",
+      "meal": false,
+      "aliases": ["AirMacau"],
+      "background_image": "images/air_macau_bg.png",
+      "background_color": "#E6F0F6"
+    },
+    {
+      "name": "Myanmar Airways",
+      "code": "UB",
+      "logo": "images/ub_logo.png",
+      "luggage": "7kg xách tay và 30kg ký gửi",
+      "meal": false,
+      "aliases": ["MyanmarAir"],
+      "background_image": "images/myanmar_airways_bg.png",
+      "background_color": "#F7E4B7"
+    },
+    {
+      "name": "American Airlines",
+      "code": "AA",
+      "logo": "images/aa_logo.png",
+      "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+      "meal": true,
+      "aliases": ["AmericanAir"],
+      "background_image": "images/american_airlines_bg.png",
+      "background_color": "#D4E4F7"
+    },
+    {
+      "name": "Delta Air Lines",
+      "code": "DL",
+      "logo": "images/dl_logo.png",
+      "luggage": "7kg xách tay và 2 kiện 23kg hành lý ký gửi",
+      "meal": true,
+      "aliases": ["Delta"],
+      "background_image": "images/delta_airlines_bg.png",
+      "background_color": "#D8E4F2"
+    },
+    {
+      "name": "Swiss International Air Lines",
+      "code": "LX",
+      "logo": "images/lx_logo.png",
+      "luggage": "8kg xách tay và 1 kiện 23kg hành lý ký gửi",
+      "meal": true,
+      "aliases": ["SwissAir"],
+      "background_image": "images/swiss_airlines_bg.png",
+      "background_color": "#F2D4D4"
     },
 	{
-	  "name": "Jetstar Airways",
-	  "code": "JQ",
-	  "logo": "images/jq_logo.png",
-	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
-	  "meal": false,
-	  "aliases": ["JetstarAir"],
-	  "background_image": "images/jetstar_airways_bg.png",
-	  "background_color": "#F5F6F5"
-	},
-	{
-	  "name": "Austrian Airlines",
-	  "code": "OS",
-	  "logo": "images/os_logo.png",
-	  "luggage": "8kg xách tay và 1 kiện 23kg hành lý ký gửi",
-	  "meal": true,
-	  "aliases": ["AustrianAir"],
-	  "background_image": "images/austrian_airlines_bg.png",
-	  "background_color": "#F4E8E9"
-	},
-	{
-	  "name": "KLM Royal Dutch Airlines",
-	  "code": "KL",
-	  "logo": "images/kl_logo.png",
-	  "luggage": "12kg xách tay và 1 kiện 23kg hành lý ký gửi",
-	  "meal": true,
-	  "aliases": ["KLM"],
-	  "background_image": "images/klm_bg.png",
-	  "background_color": "#B2D7EC"
-	},
-	{
-	  "name": "Air Macau",
-	  "code": "NX",
-	  "logo": "images/nx_logo.png",
-	  "luggage": "7kg xách tay và 1 kiện 25kg hành lý ký gửi",
-	  "meal": false,
-	  "aliases": ["AirMacau"],
-	  "background_image": "images/air_macau_bg.png",
-	  "background_color": "#E6F0F6"
-	},
-	{
-	  "name": "Myanmar Airways",
-	  "code": "UB",
-	  "logo": "images/ub_logo.png",
-	  "luggage": "7kg xách tay và 30kg ký gửi",
-	  "meal": false,
-	  "aliases": ["MyanmarAir"]
-	},
-	{
-	  "name": "American Airlines",
-	  "code": "AA",
-	  "logo": "images/aa_logo.png",
-	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
-	  "meal": true,
-	  "aliases": ["AmericanAir"]
-	},
-	{
-	  "name": "Delta Air Lines",
-	  "code": "DL",
-	  "logo": "images/dl_logo.png",
+	  "name": "JetBlue Airways",
+	  "code": "B6",
+	  "logo": "images/jetblue_logo.png",
 	  "luggage": "7kg xách tay và 2 kiện 23kg hành lý ký gửi",
 	  "meal": true,
-	  "aliases": ["Delta"]
+	  "aliases": ["JetBlue"],
+	  "background_image": "images/jetblue_airways_bg.png",
+	  "background_color": "#D3E4F9"
 	},
 	{
-	  "name": "Swiss International Air Lines",
-	  "code": "LX",
-	  "logo": "images/lx_logo.png",
-	  "luggage": "8kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "name": "Alaska Airlines",
+	  "code": "AS",
+	  "logo": "images/as_logo.png",
+	  "luggage": "7kg xách tay và 2 kiện 23kg hành lý ký gửi",
 	  "meal": true,
-	  "aliases": ["SwissAir"]
+	  "aliases": ["AlaskaAir"],
+	  "background_image": "images/alaska_airlines_bg.png",
+	  "background_color": "#C6E2E9"
+	},
+	{
+	  "name": "Air Canada",
+	  "code": "AC",
+	  "logo": "images/ac_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["AirCanada"],
+	  "background_image": "images/air_canada_bg.png",
+	  "background_color": "#F2D6D6"
+	},
+	{
+	  "name": "United Airlines",
+	  "code": "UA",
+	  "logo": "images/ua_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["UnitedAir"],
+	  "background_image": "images/united_airlines_bg.png",
+	  "background_color": "#D4E9F2"
 	}
   ],
   "child_price_ratio": 0.7

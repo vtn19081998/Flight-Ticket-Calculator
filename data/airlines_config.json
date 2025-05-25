@@ -539,6 +539,46 @@
 	  "aliases": ["UnitedAir"],
 	  "background_image": "images/united_airlines_bg.png",
 	  "background_color": "#D4E9F2"
+	},
+	{
+	  "name": "Hong Kong Express",
+	  "code": "UO",
+	  "logo": "images/uo_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": false,
+	  "aliases": ["HKExpress"],
+	  "background_image": "images/hongkong_express_bg.png",
+	  "background_color": "#F2E4D8"
+	},
+    {
+      "name": "Shanghai Airlines",
+      "code": "FM",
+      "logo": "images/fm_logo.png",
+      "luggage": "7kg xách tay và 1 kiện 20kg hành lý ký gửi",
+      "meal": false,
+      "aliases": ["ShanghaiAir"],
+      "background_image": "images/shanghai_airlines_bg.png",
+      "background_color": "#D4E8F2"
+    },
+    {
+      "name": "Shandong Airlines",
+      "code": "SC",
+      "logo": "images/sc_logo.png",
+      "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+      "meal": true,
+      "aliases": ["ShandongAir"],
+      "background_image": "images/shandong_airlines_bg.png",
+      "background_color": "#E8ECEF"
+    },
+	{
+	  "name": "Hainan Airlines",
+	  "code": "HU",
+	  "logo": "images/hu_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["HainanAir"],
+	  "background_image": "images/hainan_airlines_bg.png",
+	  "background_color": "#D8E8F2"
 	}
   ],
   "child_price_ratio": 0.7

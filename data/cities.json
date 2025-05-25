@@ -105,6 +105,25 @@
 	{"name": "Osaka Itami", "country": "Japan", "code": "ITM", "city_name": "Osaka", "aliases": ["Itami", "ITM"]},
 	{"name": "Shanghai Hongqiao", "country": "China", "code": "SHA", "city_name": "Shanghai", "aliases": ["SHA", "Hongqiao"]},
 	{"name": "Fuzhou", "country": "China", "code": "FOC", "city_name": "Fuzhou", "aliases": ["Fuzhou", "FOC"]},
-	{"name": "Taipei Songshan", "country": "Taiwan", "code": "TSA", "city_name": "Taipei", "aliases": ["TSA", "Songshan"]}
+	{"name": "Taipei Songshan", "country": "Taiwan", "code": "TSA", "city_name": "Taipei", "aliases": ["TSA", "Songshan"]},
+	{"name": "Stansted", "country": "United Kingdom", "code": "STN", "city_name": "London", "aliases": ["STN", "Stansted"]},
+	{"name": "Lyon", "country": "France", "code": "LYS", "city_name": "Lyon", "aliases": ["Lyon", "LYS"]},
+	{"name": "Madrid", "country": "Spain", "code": "MAD", "city_name": "Madrid", "aliases": ["Madrid", "MAD"]},
+	{"name": "Rome Fiumicino", "country": "Italy", "code": "FCO", "city_name": "Rome", "aliases": ["Rome", "FCO", "Fiumicino"]},
+	{"name": "Marseille", "country": "France", "code": "MRS", "city_name": "Marseille", "aliases": ["MRS"]},
+	{"name": "Montpellier", "country": "France", "code": "MPL", "city_name": "Montpellier", "aliases": ["MPL"]},
+	{"name": "Antalya", "country": "Turkey", "code": "AYT", "city_name": "Antalya", "aliases": ["AYT"]},
+	{"name": "Nice", "country": "France", "code": "NCE", "city_name": "Nice", "aliases": ["Nice", "NCE"]},
+	{"name": "Prague", "country": "Czech Republic", "code": "PRG", "city_name": "Prague", "aliases": ["PRG", "Praha"]},
+	{"name": "Toulouse", "country": "France", "code": "TLS", "city_name": "Toulouse", "aliases": ["TLS"]},
+	{"name": "Copenhagen", "country": "Denmark", "code": "CPH", "city_name": "Copenhagen", "aliases": ["CPH", "København"]},
+	{"name": "Warsaw", "country": "Poland", "code": "WAW", "city_name": "Warsaw", "aliases": ["WAW", "Warszawa"]},
+	{"name": "Helsinki", "country": "Finland", "code": "HEL", "city_name": "Helsinki", "aliases": ["HEL"]},
+	{"name": "Atlanta", "country": "United States", "code": "ATL", "city_name": "Atlanta", "aliases": ["ATL"]},
+	{"name": "Newark Liberty", "country": "United States", "code": "EWR", "city_name": "New York", "aliases": ["EWR", "Newark"]},
+	{"name": "Houston Intercontinental", "country": "United States", "code": "IAH", "city_name": "Houston", "aliases": ["IAH"]},
+	{"name": "Denver", "country": "United States", "code": "DEN", "city_name": "Denver", "aliases": ["DEN"]},
+	{"name": "Chicago O'Hare", "country": "United States", "code": "ORD", "city_name": "Chicago", "aliases": ["ORD", "Chicago"]}
+
   ]
 }

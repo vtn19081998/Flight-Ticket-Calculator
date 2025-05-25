@@ -659,6 +659,16 @@
 	  "aliases": ["AirNewZealand"],
 	  "background_image": "images/air_new_zealand_bg.png",
 	  "background_color": "#D4E8F2"
+	},
+	{
+	  "name": "Ethiopian Airlines",
+	  "code": "ET",
+	  "logo": "images/et_logo.png",
+	  "luggage": "7kg xách tay và 2 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["EthiopianAir"],
+	  "background_image": "images/ethiopian_airlines_bg.png",
+	  "background_color": "#F2E8C3"
 	}
   ],
   "child_price_ratio": 0.7

@@ -123,7 +123,24 @@
 	{"name": "Newark Liberty", "country": "United States", "code": "EWR", "city_name": "New York", "aliases": ["EWR", "Newark"]},
 	{"name": "Houston Intercontinental", "country": "United States", "code": "IAH", "city_name": "Houston", "aliases": ["IAH"]},
 	{"name": "Denver", "country": "United States", "code": "DEN", "city_name": "Denver", "aliases": ["DEN"]},
-	{"name": "Chicago O'Hare", "country": "United States", "code": "ORD", "city_name": "Chicago", "aliases": ["ORD", "Chicago"]}
-
+	{"name": "Chicago O'Hare", "country": "United States", "code": "ORD", "city_name": "Chicago", "aliases": ["ORD", "Chicago"]},
+	{"name": "Honolulu", "country": "United States", "code": "HNL", "city_name": "Honolulu", "aliases": ["HNL"]},
+	{"name": "Miami", "country": "United States", "code": "MIA", "city_name": "Miami", "aliases": ["MIA"]},
+	{"name": "Portland", "country": "United States", "code": "PDX", "city_name": "Portland", "aliases": ["PDX"]},
+    {"name": "Vancouver", "country": "Canada", "code": "YVR", "city_name": "Vancouver", "aliases": ["YVR"]},
+    {"name": "Saint Louis", "country": "United States", "code": "STL", "city_name": "Saint Louis", "aliases": ["STL"]},
+    {"name": "Washington National", "country": "United States", "code": "DCA", "city_name": "Washington, D.C", "aliases": ["DCA", "Washington National"]},
+    {"name": "Detroit", "country": "United States", "code": "DTW", "city_name": "Detroit", "aliases": ["DTW"]},
+    {"name": "Phoenix", "country": "United States", "code": "PHX", "city_name": "Phoenix", "aliases": ["PHX"]},
+    {"name": "Philadelphia", "country": "United States", "code": "PHL", "city_name": "Philadelphia", "aliases": ["PHL"]},
+    {"name": "Tampa", "country": "United States", "code": "TPA", "city_name": "Tampa", "aliases": ["TPA"]},
+    {"name": "San Diego", "country": "United States", "code": "SAN", "city_name": "San Diego", "aliases": ["SAN"]},
+	{"name": "Auckland", "country": "New Zealand", "code": "AKL", "city_name": "Auckland", "aliases": ["AKL"]},
+    {"name": "Wellington", "country": "New Zealand", "code": "WLG", "city_name": "Wellington", "aliases": ["Wellington", "WLG"]},
+    {"name": "Christchurch", "country": "New Zealand", "code": "CHC", "city_name": "Christchurch", "aliases": ["Christchurch", "CHC"]},
+    {"name": "Palmerston North", "country": "New Zealand", "code": "PMR", "city_name": "Palmerston North", "aliases": ["Palmerston North", "PMR"]},
+    {"name": "Johannesburg", "country": "South Africa", "code": "JNB", "city_name": "Johannesburg", "aliases": ["Johannesburg", "JNB"]},
+    {"name": "Harare", "country": "Zimbabwe", "code": "HRE", "city_name": "Harare", "aliases": ["Harare", "HRE"]},
+    {"name": "Cape Town", "country": "South Africa", "code": "CPT", "city_name": "Cape Town", "aliases": ["Cape Town", "CPT"]}
   ]
 }

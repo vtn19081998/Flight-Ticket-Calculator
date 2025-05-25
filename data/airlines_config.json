@@ -629,6 +629,36 @@
 	  "aliases": ["HawaiianAir"],
 	  "background_image": "images/hawaiian_airlines_bg.png",
 	  "background_color": "#D1E8F2"
+	},
+    {
+      "name": "Sun Country Airlines",
+      "code": "SY",
+      "logo": "images/sy_logo.png",
+      "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+      "meal": false,
+      "aliases": ["SunCountry"],
+      "background_image": "images/sun_country_airlines_bg.png",
+      "background_color": "#E8ECEF"
+    },
+	{
+	  "name": "Volare Airlines",
+	  "code": "VA",
+	  "logo": "images/vo_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["Volare"],
+	  "background_image": "images/volare_group_bg.png",
+	  "background_color": "#E6F0FA"
+	},
+	{
+	  "name": "Air New Zealand",
+	  "code": "NZ",
+	  "logo": "images/nz_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["AirNewZealand"],
+	  "background_image": "images/air_new_zealand_bg.png",
+	  "background_color": "#D4E8F2"
 	}
   ],
   "child_price_ratio": 0.7

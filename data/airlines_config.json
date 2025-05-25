@@ -579,6 +579,26 @@
 	  "aliases": ["HainanAir"],
 	  "background_image": "images/hainan_airlines_bg.png",
 	  "background_color": "#D8E8F2"
+	},
+	{
+	  "name": "Hahn Air Systems",
+	  "code": "H1",
+	  "logo": "images/h1_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 20kg hành lý ký gửi",
+	  "meal": false,
+	  "aliases": ["HahnAirSystems"],
+	  "background_image": "images/hahn_air_systems_bg.png",
+	  "background_color": "#E6ECEF"
+	},
+	{
+	  "name": "Malindo Airways",
+	  "code": "OD",
+	  "logo": "images/od_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 20kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["MalindoAir", "BatikAir"],
+	  "background_image": "images/malindo_airways_bg.png",
+	  "background_color": "#E6E8F2"
 	}
   ],
   "child_price_ratio": 0.7

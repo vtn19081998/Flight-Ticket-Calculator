@@ -101,6 +101,10 @@
 	{"name": "Zurich", "country": "Switzerland", "code": "ZRH", "city_name": "Zurich", "aliases": ["ZRH", "Zürich"]},
 	{"name": "Montreal", "country": "Canada", "code": "YUL", "city_name": "Montreal", "aliases": ["YUL", "Montréal"]},
 	{"name": "Boston", "country": "United States", "code": "BOS", "city_name": "Boston", "aliases": ["BOS"]},
-	{"name": "Toronto", "country": "Canada", "code": "YYZ", "city_name": "Toronto", "aliases": ["YYZ"]}
+	{"name": "Toronto", "country": "Canada", "code": "YYZ", "city_name": "Toronto", "aliases": ["YYZ"]},
+	{"name": "Osaka Itami", "country": "Japan", "code": "ITM", "city_name": "Osaka", "aliases": ["Itami", "ITM"]},
+	{"name": "Shanghai Hongqiao", "country": "China", "code": "SHA", "city_name": "Shanghai", "aliases": ["SHA", "Hongqiao"]},
+	{"name": "Fuzhou", "country": "China", "code": "FOC", "city_name": "Fuzhou", "aliases": ["Fuzhou", "FOC"]},
+	{"name": "Taipei Songshan", "country": "Taiwan", "code": "TSA", "city_name": "Taipei", "aliases": ["TSA", "Songshan"]}
   ]
 }

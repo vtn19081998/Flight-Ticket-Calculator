@@ -599,6 +599,16 @@
 	  "aliases": ["MalindoAir", "BatikAir"],
 	  "background_image": "images/malindo_airways_bg.png",
 	  "background_color": "#E6E8F2"
+	},
+	{
+	  "name": "British Airways",
+	  "code": "BA",
+	  "logo": "images/ba_logo.png",
+	  "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["BritishAir"],
+	  "background_image": "images/british_airways_bg.png",
+	  "background_color": "#D3E4F2"
 	}
   ],
   "child_price_ratio": 0.7

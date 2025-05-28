@@ -141,6 +141,8 @@
     {"name": "Palmerston North", "country": "New Zealand", "code": "PMR", "city_name": "Palmerston North", "aliases": ["Palmerston North", "PMR"]},
     {"name": "Johannesburg", "country": "South Africa", "code": "JNB", "city_name": "Johannesburg", "aliases": ["Johannesburg", "JNB"]},
     {"name": "Harare", "country": "Zimbabwe", "code": "HRE", "city_name": "Harare", "aliases": ["Harare", "HRE"]},
-    {"name": "Cape Town", "country": "South Africa", "code": "CPT", "city_name": "Cape Town", "aliases": ["Cape Town", "CPT"]}
+    {"name": "Cape Town", "country": "South Africa", "code": "CPT", "city_name": "Cape Town", "aliases": ["Cape Town", "CPT"]},
+	{"name": "Aomori", "country": "Japan", "code": "AOJ", "city_name": "Aomori", "aliases": ["AOJ"]},
+	{"name": "Sapporo", "country": "Japan", "code": "CTS", "city_name": "Sapporo", "aliases": ["CTS"]},
   ]
 }

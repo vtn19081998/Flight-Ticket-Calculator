@@ -179,6 +179,7 @@
 		{"name": "Dunedin", "country": "New Zealand", "code": "DUD", "city_name": "Dunedin", "aliases": ["Dunedin", "DUD"]},
 		{"name": "Durban", "country": "South Africa", "code": "DUR", "city_name": "Durban", "aliases": ["Durban", "DUR"]},
 		{"name": "Bulawayo", "country": "Zimbabwe", "code": "BUQ", "city_name": "Bulawayo", "aliases": ["Bulawayo", "BUQ"]},
-		{"name": "Xieng Khouang", "country": "Laos", "code": "XKH", "city_name": "Phonsavan", "aliases": ["Phonsavan", "XKH"]}
+		{"name": "Xieng Khouang", "country": "Laos", "code": "XKH", "city_name": "Phonsavan", "aliases": ["Phonsavan", "XKH"]},
+		{"name": "Nuremberg", "country": "Germany", "code": "NUE", "city_name": "Nuremberg", "aliases": ["NUE"]}
 	]
 }

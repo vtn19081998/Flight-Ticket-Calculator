@@ -181,6 +181,7 @@
 		{"name": "Bulawayo", "country": "Zimbabwe", "code": "BUQ", "city_name": "Bulawayo", "aliases": ["Bulawayo", "BUQ"]},
 		{"name": "Xieng Khouang", "country": "Laos", "code": "XKH", "city_name": "Phonsavan", "aliases": ["Phonsavan", "XKH"]},
 		{"name": "Nuremberg", "country": "Germany", "code": "NUE", "city_name": "Nuremberg", "aliases": ["NUE"]},
-		{"name": "Basel Mulhouse", "country": "Switzerland/France/Germany", "code": "BSL", "city_name": "Basel", "aliases": ["Basel", "BSL"]}
+		{"name": "Basel Mulhouse", "country": "France", "code": "BSL", "city_name": "Basel Mulhouse", "aliases": ["BSL", "EuroAirport", "Basel", "Mulhouse", "Basel-Mulhouse"]}
+
 	]
 }

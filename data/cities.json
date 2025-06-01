@@ -180,6 +180,7 @@
 		{"name": "Durban", "country": "South Africa", "code": "DUR", "city_name": "Durban", "aliases": ["Durban", "DUR"]},
 		{"name": "Bulawayo", "country": "Zimbabwe", "code": "BUQ", "city_name": "Bulawayo", "aliases": ["Bulawayo", "BUQ"]},
 		{"name": "Xieng Khouang", "country": "Laos", "code": "XKH", "city_name": "Phonsavan", "aliases": ["Phonsavan", "XKH"]},
-		{"name": "Nuremberg", "country": "Germany", "code": "NUE", "city_name": "Nuremberg", "aliases": ["NUE"]}
+		{"name": "Nuremberg", "country": "Germany", "code": "NUE", "city_name": "Nuremberg", "aliases": ["NUE"]},
+		{"name": "Basel Mulhouse", "country": "Switzerland/France/Germany", "code": "BSL", "city_name": "Basel", "aliases": ["Basel", "BSL"]}
 	]
 }

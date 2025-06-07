@@ -182,7 +182,8 @@
 		{"name": "Xieng Khouang", "country": "Laos", "code": "XKH", "city_name": "Phonsavan", "aliases": ["Phonsavan", "XKH"]},
 		{"name": "Nuremberg", "country": "Germany", "code": "NUE", "city_name": "Nuremberg", "aliases": ["NUE"]},
 		{"name": "Basel Mulhouse", "country": "France", "code": "BSL", "city_name": "Basel Mulhouse", "aliases": ["BSL", "EuroAirport", "Basel", "Mulhouse", "Basel-Mulhouse"]},
-		{"name": "Daegu", "country": "South Korea", "code": "TAE", "city_name": "Daegu", "aliases": ["Daegu", "TAE"]}
+		{"name": "Daegu", "country": "South Korea", "code": "TAE", "city_name": "Daegu", "aliases": ["Daegu", "TAE"]},
+		{"name": "Bremen", "country": "Germany", "code": "BRE", "city_name": "Bremen", "aliases": ["Bremen", "BRE"]}
 
 	]
 }

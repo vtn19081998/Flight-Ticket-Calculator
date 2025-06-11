@@ -186,6 +186,7 @@
 		{"name": "Bremen", "country": "Germany", "code": "BRE", "city_name": "Bremen", "aliases": ["Bremen", "BRE"]},
 		{"name": "Duesseldorf", "country": "Germany", "code": "DUS", "city_name": "Duesseldorf", "aliases": ["Duesseldorf", "DUS", "Düsseldorf"]},
 		{"name": "Winnipeg", "country": "Canada", "code": "YWG", "city_name": "Winnipeg", "aliases": ["Winnipeg", "YWG"]},
-		{"name": "Leipzig/Halle", "country": "Germany", "code": "LEJ", "city_name": "Leipzig", "aliases": ["Leipzig", "Halle", "LEJ", "Leipzig/Halle"]}
+		{"name": "Leipzig/Halle", "country": "Germany", "code": "LEJ", "city_name": "Leipzig", "aliases": ["Leipzig", "Halle", "LEJ", "Leipzig/Halle"]},
+		{"name": "Hiroshima", "country": "Japan", "code": "HIJ", "city_name": "Hiroshima", "aliases": ["Hiroshima", "HIJ"]}
 	]
 }

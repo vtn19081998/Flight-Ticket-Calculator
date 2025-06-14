@@ -1,0 +1,182 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên hệ - Flight Ticket Calculator</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --header-bg: linear-gradient(90deg, #4a90e2, #50e3c2);
+      --nav-bg: #333333;
+      --nav-text: #ffffff;
+      --section-bg: #f9fbfd;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --header-bg: linear-gradient(90deg, #2a6eb4, #2a9d8f);
+        --nav-bg: #222222;
+        --nav-text: #ffffff;
+        --section-bg: #2d2d2d;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+    header {
+      background: var(--header-bg);
+      color: var(--nav-text);
+      padding: 1.5rem 0;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    header img {
+      width: 150px;
+      margin-bottom: 0.5rem;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
+      font-weight: 600;
+    }
+    nav {
+      background: var(--nav-bg);
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+    nav a {
+      color: var(--nav-text);
+      margin: 0 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #ffd700;
+    }
+    .support-section {
+      padding: 2.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--section-bg);
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      animation: fadeIn 1s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .telegram-chat {
+      margin-top: 2rem;
+      border: 2px solid var(--text-color);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    @media (max-width: 600px) {
+      .support-section { padding: 1.5rem; }
+      header img { width: 120px; }
+      header h1 { font-size: 1.5em; }
+    }
+    /* Floating Contact */
+    .floating-contact {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+    .floating-contact img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: var(--shadow);
+    }
+    .floating-contact img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="data/logo.png" alt="Flight Ticket Calculator Logo">
+    <h1>Flight Ticket Calculator</h1>
+  </header>
+  <nav>
+    <a href="index.html">Trang chủ</a>
+    <a href="guide.html">Hướng dẫn</a>
+    <a href="download.html">Tải xuống</a>
+    <a href="support.html">Liên hệ</a>
+  </nav>
+  <div class="support-section">
+    <h2>Liên hệ</h2>
+    <p>Nếu bạn cần hỗ trợ, vui lòng liên hệ với chúng tôi qua Telegram <strong>@batman1397</strong>.</p>
+    <div class="telegram-chat">
+      <iframe src="https://web.telegram.org/k/#@batman1397" width="100%" height="400" frameborder="0"></iframe>
+    </div>
+  </div>
+  <div class="floating-contact">
+    <a href="https://t.me/batman1397" target="_blank"><img src="data/chat.png" alt="Liên hệ ngay qua telegram"></a>
+  </div>
+  <script>
+    window.onload = function() {
+      const supportSection = document.querySelector('.support-section');
+      supportSection.style.opacity = 1;
+    };
+  </script>
+</body>
+</html>

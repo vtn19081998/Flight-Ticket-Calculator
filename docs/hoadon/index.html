@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="data/styles.css">
     <link rel="icon" type="image/x-icon" href="data/favicon.ico">
     <script defer src="data/html2canvas.min.js"></script>
+	
+	<style>
+	  body { display: none; }
+	</style>
+
+	
 </head>
 <body>
 	<div class="container">
@@ -455,5 +461,85 @@
 			});
 		}
 	</script>
+	
+<!-- Firebase SDK (compat version) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+<script>
+  // Cấu hình Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyCU2lHfJmlQZ1mfDZlrNC7ejIetVv4uQTE",
+    authDomain: "flight-ticket-calculator-68881.firebaseapp.com",
+    projectId: "flight-ticket-calculator-68881",
+    appId: "1:344355928134:web:700d9d1b92d3ce2effb247",
+    databaseURL: "https://flight-ticket-calculator-68881-default-rtdb.asia-southeast1.firebasedatabase.app"
+  };
+
+  // Khởi tạo Firebase
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.database();
+
+  // Kiểm tra trạng thái đăng nhập
+  document.addEventListener("DOMContentLoaded", () => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        // Hiển thị nội dung
+        document.body.style.display = "block";
+
+        // === Quản lý phiên đăng nhập ===
+        const sessionId = crypto.randomUUID(); // Tạo session ID ngẫu nhiên
+        localStorage.setItem("sessionId", sessionId);
+
+        const sessionRef = db.ref("online_web_sessions/" + user.uid);
+        sessionRef.set({
+          sessionId: sessionId,
+          timestamp: Date.now()
+        });
+
+        // Theo dõi xem session có bị thay thế không
+        sessionRef.child("sessionId").on("value", (snapshot) => {
+          const serverSessionId = snapshot.val();
+          const localSessionId = localStorage.getItem("sessionId");
+
+          if (serverSessionId && localSessionId !== serverSessionId) {
+            alert("Tài khoản này đã được đăng nhập ở thiết bị khác. Bạn sẽ bị đăng xuất.");
+            auth.signOut().then(() => {
+              location.href = "login.html";
+            });
+          }
+        });
+
+      } else {
+        // Nếu chưa đăng nhập → chuyển về login
+        window.location.href = "login.html";
+      }
+    });
+  });
+</script>
+
+
+<script>
+  // Chặn chuột phải
+  document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+  });
+
+  // Chặn phím F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
+  document.onkeydown = function (e) {
+    if (
+      e.keyCode === 123 || // F12
+      (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) || // Ctrl+Shift+I
+      (e.ctrlKey && (e.key === 'U' || e.key === 'u')) || // Ctrl+U
+      (e.ctrlKey && (e.key === 'S' || e.key === 's')) // Ctrl+S
+    ) {
+      e.preventDefault();
+      return false;
+    }
+  };
+</script>
+
 </body>
 </html>

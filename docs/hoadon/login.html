@@ -21,6 +21,7 @@
       height: 100vh;
       margin: 0;
     }
+
     .login-container {
       background: white;
       padding: 30px 40px;
@@ -29,21 +30,25 @@
       width: 370px;
       text-align: center;
     }
+
     .login-container img.logo {
       width: 48px;
       height: 48px;
       margin-bottom: 10px;
     }
+
     h1 {
       font-size: 20px;
       margin-bottom: 4px;
       color: #333;
     }
+
     h2 {
       font-size: 18px;
       margin-bottom: 20px;
       color: #007bff;
     }
+
     input[type="email"],
     input[type="password"] {
       width: 100%;
@@ -52,14 +57,20 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 14px;
+      box-sizing: border-box;
     }
+
     .button-row {
       display: flex;
-      justify-content: space-between;
+      width: 100%;
       gap: 10px;
+      box-sizing: border-box;
+      margin-top: 5px;
     }
-    button {
-      flex: 1;
+
+    .button-row button {
+      flex: 1 1 0;
+      min-width: 0;
       padding: 12px;
       background-color: #007bff;
       color: white;
@@ -67,31 +78,36 @@
       border-radius: 6px;
       font-size: 15px;
       cursor: pointer;
+      box-sizing: border-box;
     }
-    button:hover {
+
+    .button-row button:hover {
       background-color: #0056b3;
     }
+
     .status {
       margin-top: 15px;
       font-size: 14px;
       color: red;
       min-height: 20px;
     }
+
     .footer {
       margin-top: 20px;
       font-size: 13px;
     }
+
     .footer a {
       color: #007bff;
       text-decoration: none;
     }
+
     .footer a:hover {
       text-decoration: underline;
     }
   </style>
 
   <script>
-    // Cấu hình Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCU2lHfJmlQZ1mfDZlrNC7ejIetVv4uQTE",
       authDomain: "flight-ticket-calculator-68881.firebaseapp.com",
@@ -101,17 +117,15 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    // Kiểm tra đã đăng nhập → vào index.html
     auth.onAuthStateChanged((user) => {
       if (user) {
         window.location.href = "index.html";
       }
     });
 
-    // Hàm đăng nhập
     function signIn() {
       const email = document.getElementById("email").value.trim();
-	  localStorage.setItem("lastEmail", email);
+      localStorage.setItem("lastEmail", email);
       const password = document.getElementById("password").value.trim();
       const status = document.getElementById("status");
 
@@ -119,59 +133,54 @@
         .then(() => {
           status.style.color = "green";
           status.innerText = "Đăng nhập thành công. Đang chuyển hướng...";
-          window.location.href = "index.html";
+          setTimeout(() => {
+            window.location.href = "index.html";
+          }, 800);
         })
-		.catch((error) => {
-		  let message = "Đăng nhập thất bại. ";
-		  switch (error.code) {
-			case "auth/user-not-found":
-			  message += "Tài khoản không tồn tại.";
-			  break;
-			case "auth/wrong-password":
-			  message += "Mật khẩu không đúng.";
-			  break;
-			case "auth/invalid-email":
-			  message += "Email không hợp lệ.";
-			  break;
-			case "auth/too-many-requests":
-			  message += "Bạn đã thử quá nhiều lần. Vui lòng thử lại sau vài phút.";
-			  break;
-			case "auth/user-disabled":
-			  message += "Tài khoản này đã bị vô hiệu hóa.";
-			  break;
-			case "auth/network-request-failed":
-			  message += "Không thể kết nối mạng.";
-			  break;
-			default:
-			  message += "Vui lòng thử lại.";
-		  }
-		  status.style.color = "red";
-		  status.innerText = message;
-		});
-
-
+        .catch((error) => {
+          let message = "Đăng nhập thất bại. ";
+          switch (error.code) {
+            case "auth/user-not-found":
+              message += "Tài khoản không tồn tại.";
+              break;
+            case "auth/wrong-password":
+              message += "Mật khẩu không đúng.";
+              break;
+            case "auth/invalid-email":
+              message += "Email không hợp lệ.";
+              break;
+            case "auth/too-many-requests":
+              message += "Bạn đã thử quá nhiều lần. Vui lòng thử lại sau vài phút.";
+              break;
+            case "auth/user-disabled":
+              message += "Tài khoản này đã bị vô hiệu hóa.";
+              break;
+            case "auth/network-request-failed":
+              message += "Không thể kết nối mạng.";
+              break;
+            default:
+              message += "Vui lòng thử lại.";
+          }
+          status.style.color = "red";
+          status.innerText = message;
+        });
     }
 
-	// Cho phép Enter để đăng nhập
-	document.addEventListener("DOMContentLoaded", () => {
-	  const emailInput = document.getElementById("email");
-	  emailInput.focus();
+    document.addEventListener("DOMContentLoaded", () => {
+      const emailInput = document.getElementById("email");
+      emailInput.focus();
 
-	  // Khôi phục email đã dùng gần nhất
-	  const savedEmail = localStorage.getItem("lastEmail");
-	  if (savedEmail) {
-		emailInput.value = savedEmail;
-	  }
+      const savedEmail = localStorage.getItem("lastEmail");
+      if (savedEmail) {
+        emailInput.value = savedEmail;
+      }
 
-	  // Bắt submit
-	  document.getElementById("login-form").addEventListener("submit", function (e) {
-		e.preventDefault();
-		signIn();
-	  });
-	});
+      document.getElementById("login-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        signIn();
+      });
+    });
 
-
-    // Hàm xử lý nút đăng ký
     function showRegisterInfo() {
       const status = document.getElementById("status");
       status.style.color = "#007bff";
@@ -185,17 +194,15 @@
     <h1>Cổng thanh toán trực tuyến</h1>
     <h2>Flight Ticket Paygate</h2>
 
-	<form id="login-form">
-	  <input type="email" id="email" placeholder="Email" required>
-	  <input type="password" id="password" placeholder="Mật khẩu" required>
+    <form id="login-form">
+      <input type="email" id="email" placeholder="Email" required autocomplete="email">
+      <input type="password" id="password" placeholder="Mật khẩu" required>
 
-	  <div class="button-row">
-		<button type="submit">Đăng nhập</button>
-		<button type="button" onclick="showRegisterInfo()">Đăng ký</button>
-	  </div>
-	</form>
-
-
+      <div class="button-row">
+        <button type="submit">Đăng nhập</button>
+        <button type="button" onclick="showRegisterInfo()">Đăng ký</button>
+      </div>
+    </form>
 
     <p class="status" id="status"></p>
 
@@ -203,25 +210,23 @@
       Phần mềm hỗ trợ bán vé máy bay <a href="https://vmb88.net" target="_blank">vmb88.net</a>
     </div>
   </div>
-  
-<script>
-  // Chặn chuột phải
-  document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-  });
 
-  // Chặn phím F12, Ctrl+Shift+I, Ctrl+U, Ctrl+S
-  document.onkeydown = function (e) {
-    if (
-      e.keyCode === 123 || // F12
-      (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) || // Ctrl+Shift+I
-      (e.ctrlKey && (e.key === 'U' || e.key === 'u')) || // Ctrl+U
-      (e.ctrlKey && (e.key === 'S' || e.key === 's')) // Ctrl+S
-    ) {
+  <script>
+    document.addEventListener('contextmenu', function (e) {
       e.preventDefault();
-      return false;
-    }
-  };
-</script>
+    });
+
+    document.onkeydown = function (e) {
+      if (
+        e.keyCode === 123 ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) ||
+        (e.ctrlKey && (e.key === 'U' || e.key === 'u')) ||
+        (e.ctrlKey && (e.key === 'S' || e.key === 's'))
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    };
+  </script>
 </body>
 </html>

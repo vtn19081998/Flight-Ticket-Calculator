@@ -13,6 +13,19 @@
 	
 	<style>
 	  body { display: none; }
+        /* CSS cho thông báo */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px;
+            background-color: #f44336;
+            color: white;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+        }
 	</style>
 
 	
@@ -486,7 +499,7 @@
 			}, 2000);
 		}
 	</script>
-	
+
 <!-- Firebase SDK (compat version) -->
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
@@ -507,44 +520,71 @@
   const auth = firebase.auth();
   const db = firebase.database();
 
-  // Kiểm tra trạng thái đăng nhập
+  // Kiểm tra phiên đăng nhập duy nhất
   document.addEventListener("DOMContentLoaded", () => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         // Hiển thị nội dung
         document.body.style.display = "block";
 
-        // === Quản lý phiên đăng nhập ===
-        const sessionId = crypto.randomUUID(); // Tạo session ID ngẫu nhiên
+        // === SESSION DUY NHẤT ===
+        const sessionId = crypto.randomUUID();
         localStorage.setItem("sessionId", sessionId);
-
         const sessionRef = db.ref("online_web_sessions/" + user.uid);
+
         sessionRef.set({
           sessionId: sessionId,
           timestamp: Date.now()
         });
 
-        // Theo dõi xem session có bị thay thế không
+        // Theo dõi bị thay thế phiên
         sessionRef.child("sessionId").on("value", (snapshot) => {
           const serverSessionId = snapshot.val();
           const localSessionId = localStorage.getItem("sessionId");
 
-          if (serverSessionId && localSessionId !== serverSessionId) {
-            alert("Tài khoản này đã được đăng nhập ở thiết bị khác. Bạn sẽ bị đăng xuất.");
+          if (serverSessionId && serverSessionId !== localSessionId) {
+            alert("⚠️ Phiên làm việc đã bị thay thế bởi thiết bị khác. Bạn sẽ được đăng xuất.");
             auth.signOut().then(() => {
               location.href = "login.html";
             });
           }
         });
 
+        // === KIỂM TRA ĐỊNH KỲ: tài khoản còn tồn tại không ===
+        setInterval(async () => {
+          try {
+            await user.reload(); // Tải lại user từ server
+            const refreshedUser = auth.currentUser;
+
+            if (!refreshedUser || refreshedUser.uid !== user.uid) {
+              throw new Error("Tài khoản không còn hợp lệ.");
+            }
+
+            // Kiểm tra thêm trạng thái bị disable
+            if (refreshedUser.disabled) {
+              throw new Error("Tài khoản đã bị vô hiệu hóa.");
+            }
+          } catch (error) {
+            let reason = "Phiên làm việc đã hết hạn hoặc tài khoản bị thay đổi.";
+            if (error.message.includes("disabled")) {
+              reason = "⚠️ Tài khoản của bạn đã bị vô hiệu hóa.";
+            } else if (error.message.includes("auth/user-not-found")) {
+              reason = "⚠️ Tài khoản đã bị xóa khỏi hệ thống.";
+            }
+
+            alert(reason);
+            auth.signOut().then(() => {
+              location.href = "login.html";
+            });
+          }
+        }, 15000); // kiểm tra mỗi 5 phút
       } else {
-        // Nếu chưa đăng nhập → chuyển về login
+        // Nếu không đăng nhập thì chuyển về login
         window.location.href = "login.html";
       }
     });
   });
 </script>
-
 
 <script>
   // Chặn chuột phải

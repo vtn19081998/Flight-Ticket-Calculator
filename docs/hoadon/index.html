@@ -214,7 +214,7 @@
 			if (!bank || !accountNumber || !accountName) {
 				qrImg.src = "";
 				qrImg.style.display = "none";
-				alert('Vui lòng điền đầy đủ thông tin: Tên tài khoản, Số tiền, Nội dung, Ngân hàng và Số tài khoản');
+				showToast('Vui lòng điền đầy đủ thông tin: Tên tài khoản, Số tiền, Nội dung, Ngân hàng và Số tài khoản');
 				return;
 			}
 
@@ -471,6 +471,19 @@
 			} else {
 				alert('Không tìm thấy ảnh QR!');
 			}
+		}
+		
+		// Hàm hiển thị toast
+		function showToast(message) {
+			const toast = document.createElement('div');
+			toast.className = 'toast';
+			toast.textContent = message;
+			document.body.appendChild(toast);
+			setTimeout(() => toast.classList.add('show'), 100);
+			setTimeout(() => {
+				toast.classList.remove('show');
+				setTimeout(() => toast.remove(), 300);
+			}, 2000);
 		}
 	</script>
 	

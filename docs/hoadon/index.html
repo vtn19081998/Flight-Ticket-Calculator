@@ -84,6 +84,7 @@
 
 <div class="button-group">
     <button class="screenshot-btn" onclick="takeScreenshot()" aria-label="Chụp và sao chép ảnh màn hình">Chụp ảnh màn hình</button>
+    <button class="screenshot-btn" onclick="copyQRToClipboard()" aria-label="Chụp ảnh QR">Chụp ảnh QR</button>
     <button class="copy-content-btn" onclick="copyPaymentContent()" aria-label="Sao chép nội dung thanh toán">Sao chép nội dung</button>
 </div>
         <div class="form-group">
@@ -199,7 +200,7 @@
 				img.crossOrigin = "anonymous";
 				img.src = url;
 				img.onload = () => resolve(img);
-				img.onerror = () => reject(new Error('Không thể tải hình ảnh VietQR'));
+				img.onerror = () => reject(new Error('Không thể tải hình ảnh VietQR. Hãy kiểm tra và nhập đầy đủ thông tin'));
 			});
 		}
 
@@ -213,14 +214,14 @@
 			if (!bank || !accountNumber || !accountName) {
 				qrImg.src = "";
 				qrImg.style.display = "none";
-				showToast('Vui lòng điền đầy đủ thông tin: Tên tài khoản, Số tài khoản và Ngân hàng!');
+				alert('Vui lòng điền đầy đủ thông tin: Tên tài khoản, Số tiền, Nội dung, Ngân hàng và Số tài khoản');
 				return;
 			}
 
 			if (!/^\d+$/.test(accountNumber)) {
 				qrImg.src = "";
 				qrImg.style.display = "none";
-				showToast('Số tài khoản chỉ được chứa chữ số!');
+				alert('Số tài khoản chỉ được chứa chữ số!');
 				return;
 			}
 
@@ -235,12 +236,12 @@
 					console.error('Lỗi khi tải mã VietQR:', err);
 					qrImg.src = "";
 					qrImg.style.display = "none";
-					showToast('Không thể tải mã VietQR. Vui lòng kiểm tra thông tin!');
+					alert('Không thể tải mã VietQR. Hãy kiểm tra và nhập đầy đủ thông tin');
 				}
 			} else {
 				qrImg.src = "";
 				qrImg.style.display = "none";
-				showToast('Thông tin không hợp lệ để tạo mã VietQR!');
+				alert('Thông tin không hợp lệ để tạo mã VietQR!');
 			}
 		}
 
@@ -347,13 +348,13 @@
 				const textToCopy = contentInput.value.trim();
 				if (textToCopy) {
 					navigator.clipboard.writeText(textToCopy).then(() => {
-						showToast('Đã sao chép nội dung: ' + textToCopy);
+						alert('Đã sao chép nội dung: ' + textToCopy);
 					}).catch(err => {
 						console.error('Lỗi khi sao chép:', err);
-						showToast('Không thể sao chép, vui lòng thử lại!');
+						alert('Không thể sao chép, vui lòng thử lại!');
 					});
 				} else {
-					showToast('Nội dung trống, không thể sao chép!');
+					alert('Nội dung trống, không thể sao chép!');
 				}
 			});
 			copyBtn.addEventListener('keydown', (e) => {
@@ -364,19 +365,6 @@
 			});
 		});
 
-		// Hàm hiển thị toast
-		function showToast(message) {
-			const toast = document.createElement('div');
-			toast.className = 'toast';
-			toast.textContent = message;
-			document.body.appendChild(toast);
-			setTimeout(() => toast.classList.add('show'), 100);
-			setTimeout(() => {
-				toast.classList.remove('show');
-				setTimeout(() => toast.remove(), 300);
-			}, 2000);
-		}
-
 		// Hàm chụp ảnh màn hình
 		async function takeScreenshot() {
 			const qrImg = document.getElementById("vietqr-code");
@@ -385,7 +373,7 @@
 					await preloadImage(qrImg.src);
 				} catch (err) {
 					console.error('Lỗi tải hình ảnh VietQR:', err);
-					showToast('Không thể tải mã VietQR để chụp ảnh!');
+					alert('Không thể tải mã VietQR. Hãy kiểm tra và nhập đầy đủ thông tin');
 					return;
 				}
 			}
@@ -399,7 +387,7 @@
 					if (navigator.clipboard && ClipboardItem) {
 						const item = new ClipboardItem({ 'image/png': blob });
 						navigator.clipboard.write([item]).then(() => {
-							showToast('Ảnh đã được sao chép vào clipboard!');
+							alert('Ảnh hóa đơn đã được sao chép vào clipboard!');
 						}).catch(err => {
 							console.error('Lỗi khi sao chép ảnh:', err);
 							fallbackDownload(canvas);
@@ -410,7 +398,7 @@
 				});
 			}).catch(err => {
 				console.error('Lỗi khi chụp ảnh màn hình:', err);
-				showToast('Có lỗi xảy ra khi chụp ảnh màn hình!');
+				alert('Có lỗi xảy ra khi chụp ảnh màn hình!');
 			});
 		}
 
@@ -420,7 +408,7 @@
 			link.download = 'payment-screenshot.png';
 			link.href = canvas.toDataURL('image/png');
 			link.click();
-			showToast('Ảnh đã được tải xuống!');
+			alert('Ảnh đã được tải xuống!');
 		}
 
 		// Hàm debounce
@@ -445,7 +433,7 @@
 
 			// Kiểm tra xem các trường có rỗng không
 			if (!accountName || !amount || !content || !bank || !accountNumber) {
-				showToast('Vui lòng điền đầy đủ thông tin thanh toán!');
+				alert('Không thể sao chép nội dung. Hãy kiểm tra và nhập đầy đủ thông tin');
 				return;
 			}
 
@@ -454,11 +442,35 @@
 
 			// Sao chép vào clipboard
 			navigator.clipboard.writeText(textToCopy).then(() => {
-				showToast('Đã sao chép nội dung thanh toán!');
+				alert('Đã sao chép nội dung thanh toán!');
 			}).catch(err => {
 				console.error('Lỗi khi sao chép nội dung:', err);
-				showToast('Không thể sao chép, vui lòng thử lại!');
+				alert('Không thể sao chép, vui lòng thử lại!');
 			});
+		}
+		
+		// Hàm chụp ảnh QR
+		function copyQRToClipboard() {
+			const qrImage = document.querySelector('img#vietqr-code'); // Giữ id="vietqr-code" như code của bạn
+			if (qrImage) {
+				fetch(qrImage.src)
+					.then(response => response.blob())
+					.then(blob => {
+						const item = new ClipboardItem({ 'image/png': blob });
+						navigator.clipboard.write([item])
+							.then(() => alert('Ảnh QR đã được sao chép vào clipboard!'))
+							.catch(err => {
+								console.error('Lỗi khi sao chép ảnh QR:', err);
+								alert('Lỗi khi sao chép ảnh QR. Hãy kiểm tra và nhập đầy đủ thông tin');
+							});
+					})
+					.catch(err => {
+						console.error('Lỗi khi tải ảnh QR:', err);
+						alert('Lỗi khi tải ảnh QR!');
+					});
+			} else {
+				alert('Không tìm thấy ảnh QR!');
+			}
 		}
 	</script>
 	

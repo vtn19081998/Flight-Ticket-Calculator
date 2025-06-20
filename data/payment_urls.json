@@ -1,15 +1,12 @@
 {
     "payment_urls": [
-        "https://flight-ticket-paygate.pages.dev/",
-        "https://vtn19081998.github.io/Flight-Ticket-Paygate/",
         "https://incomparable-bublanina-9938b5.netlify.app/",
         "https://flight-ticket-paygate.onrender.com",
-		"https://vmb88.net/hoadon/",
-		"https://hoadon.vmb88.net/",
-		"https://flight-ticket-paygate.web.app/",
-		"https://flight-ticket-paygate.firebaseapp.com/",
-		"https://paygate.vmb88.net/",
-		"https://invoice.vmb88.net/",
-		"https://pay.vmb88.net/"
+	"https://hoadon.vmb88.net/",
+	"https://flight-ticket-paygate.web.app/",
+	"https://flight-ticket-paygate.firebaseapp.com/",
+	"https://paygate.vmb88.net/",
+	"https://invoice.vmb88.net/",
+	"https://pay.vmb88.net/"
     ]
 }

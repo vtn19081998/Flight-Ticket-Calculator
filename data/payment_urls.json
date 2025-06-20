@@ -1,12 +1,12 @@
 {
 	"payment_urls": [
-	"https://incomparable-bublanina-9938b5.netlify.app/",
-	"https://flight-ticket-paygate.onrender.com",
-	"https://hoadon.vmb88.net/",
-	"https://flight-ticket-paygate.web.app/",
-	"https://flight-ticket-paygate.firebaseapp.com/",
-	"https://paygate.vmb88.net/",
-	"https://invoice.vmb88.net/",
-	"https://pay.vmb88.net/"
+		"https://incomparable-bublanina-9938b5.netlify.app/",
+		"https://flight-ticket-paygate.onrender.com",
+		"https://hoadon.vmb88.net/",
+		"https://flight-ticket-paygate.web.app/",
+		"https://flight-ticket-paygate.firebaseapp.com/",
+		"https://paygate.vmb88.net/",
+		"https://invoice.vmb88.net/",
+		"https://pay.vmb88.net/"
     ]
 }

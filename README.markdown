@@ -4,8 +4,8 @@ _Flight Ticket Calculator hỗ trợ nhân viên sale tính giá vé máy bay t�
 
 **Website chính thức**
 
-- [https://vmb88.net/](https://vmb88.net)
-- [https://pay.vmb88.net/](https://pay.vmb88.net)
+- [https://vmb88.net](https://vmb88.net)
+- [https://pay.vmb88.net](https://pay.vmb88.net)
 
 **Tính năng nổi bật**
 

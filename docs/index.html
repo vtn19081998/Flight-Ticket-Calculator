@@ -195,6 +195,7 @@
   </style>
 </head>
 <body>
+<button id="theme-toggle" style="position: fixed; top: 10px; right: 10px; z-index: 9999; background: #007bff; color: white; border: none; border-radius: 6px; padding: 8px 12px; cursor: pointer;">🌙</button>
   <header>
     <img src="data/logo.png" alt="Flight Ticket Calculator Logo">
     <h1>Flight Ticket Calculator</h1>
@@ -289,5 +290,52 @@
       }
     };
   </script>
+<script>
+  const toggleBtn = document.getElementById("theme-toggle");
+
+  function setTheme(theme, save = true) {
+    const root = document.documentElement;
+
+    if (theme === "dark") {
+      root.style.setProperty("--bg-color", "#1a1a1a");
+      root.style.setProperty("--text-color", "#e0e0e0");
+      root.style.setProperty("--header-bg", "linear-gradient(90deg, #2a6eb4, #2a9d8f)");
+      root.style.setProperty("--nav-bg", "#222222");
+      root.style.setProperty("--nav-text", "#ffffff");
+      root.style.setProperty("--section-bg", "#2d2d2d");
+      root.style.setProperty("--shadow", "0 4px 6px rgba(0, 0, 0, 0.3)");
+      toggleBtn.innerText = "☀️";
+    } else {
+      root.style.setProperty("--bg-color", "#ffffff");
+      root.style.setProperty("--text-color", "#333333");
+      root.style.setProperty("--header-bg", "linear-gradient(90deg, #4a90e2, #50e3c2)");
+      root.style.setProperty("--nav-bg", "#333333");
+      root.style.setProperty("--nav-text", "#ffffff");
+      root.style.setProperty("--section-bg", "#f9fbfd");
+      root.style.setProperty("--shadow", "0 4px 6px rgba(0, 0, 0, 0.1)");
+      toggleBtn.innerText = "🌙";
+    }
+
+    if (save) localStorage.setItem("theme", theme);
+  }
+
+  function initTheme() {
+    const saved = localStorage.getItem("theme");
+    if (saved) {
+      setTheme(saved, false);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark ? "dark" : "light", false);
+    }
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    const isDark = toggleBtn.innerText === "☀️";
+    setTheme(isDark ? "light" : "dark");
+  });
+
+  initTheme();
+</script>
+
 </body>
 </html>

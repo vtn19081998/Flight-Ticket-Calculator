@@ -189,6 +189,7 @@
 		{"name": "Leipzig/Halle", "country": "Germany", "code": "LEJ", "city_name": "Leipzig", "aliases": ["Leipzig", "Halle", "LEJ", "Leipzig/Halle"]},
 		{"name": "Hiroshima", "country": "Japan", "code": "HIJ", "city_name": "Hiroshima", "aliases": ["Hiroshima", "HIJ"]},
 		{"name": "Nantes", "country": "France", "code": "NTE", "city_name": "Nantes", "aliases": ["Nantes", "NTE"]},
-		{"name": "Muscat", "country": "Oman", "code": "MCT", "city_name": "Muscat", "aliases": ["Muscat", "MCT"]}
+		{"name": "Muscat", "country": "Oman", "code": "MCT", "city_name": "Muscat", "aliases": ["Muscat", "MCT"]},
+		{"name": "Hannover", "country": "Germany", "code": "HAJ", "city_name": "Hannover", "aliases": ["Hannover", "HAJ"]}
 	]
 }

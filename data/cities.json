@@ -192,6 +192,7 @@
 		{"name": "Muscat", "country": "Oman", "code": "MCT", "city_name": "Muscat", "aliases": ["Muscat", "MCT"]},
 		{"name": "Hannover", "country": "Germany", "code": "HAJ", "city_name": "Hannover", "aliases": ["Hannover", "HAJ"]},
 		{"name": "Ningbo", "country": "China", "code": "NGB", "city_name": "Ningbo", "aliases": ["Ningbo", "NGB"]},
-		{"name": "Wenzhou", "country": "China", "code": "WNZ", "city_name": "Wenzhou", "aliases": ["Wenzhou", "WNZ"]}
+		{"name": "Wenzhou", "country": "China", "code": "WNZ", "city_name": "Wenzhou", "aliases": ["Wenzhou", "WNZ"]},
+		{"name": "Iwami", "country": "Japan", "code": "IWJ", "city_name": "Iwami", "aliases": ["Iwami", "IWJ"]}
 	]
 }

@@ -193,6 +193,9 @@
 		{"name": "Hannover", "country": "Germany", "code": "HAJ", "city_name": "Hannover", "aliases": ["Hannover", "HAJ"]},
 		{"name": "Ningbo", "country": "China", "code": "NGB", "city_name": "Ningbo", "aliases": ["Ningbo", "NGB"]},
 		{"name": "Wenzhou", "country": "China", "code": "WNZ", "city_name": "Wenzhou", "aliases": ["Wenzhou", "WNZ"]},
-		{"name": "Iwami", "country": "Japan", "code": "IWJ", "city_name": "Iwami", "aliases": ["Iwami", "IWJ"]}
+		{"name": "Iwami", "country": "Japan", "code": "IWJ", "city_name": "Iwami", "aliases": ["Iwami", "IWJ"]},
+		{"name": "Bucharest", "country": "Romania", "code": "OTP", "city_name": "Bucharest", "aliases": ["Bucharest", "OTP"]},
+		{"name": "Sofia", "country": "Bulgaria", "code": "SOF", "city_name": "Sofia", "aliases": ["Sofia", "SOF"]},
+		{"name": "Varna", "country": "Bulgaria", "code": "VAR", "city_name": "Varna", "aliases": ["Varna", "VAR"]}
 	]
 }

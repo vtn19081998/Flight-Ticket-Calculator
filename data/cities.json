@@ -45,7 +45,7 @@
 		{"name": "Singapore", "country": "Singapore", "code": "SIN", "city_name": "Singapore", "aliases": ["SIN"]},
 		{"name": "Kuala Lumpur", "country": "Malaysia", "code": "KUL", "city_name": "Kuala Lumpur", "aliases": ["KUL"]},
 		{"name": "Jakarta", "country": "Indonesia", "code": "CGK", "city_name": "Jakarta", "aliases": ["CGK"]},
-		{"name": "Denpasar Bali", "country": "Indonesia", "code": "DPS", "city_name": "Bali", "aliases": ["DPS", "Denpasar Bali"]},
+		{"name": "Denpasar Bali", "country": "Indonesia", "code": "DPS", "city_name": "Bali", "aliases": ["Denpasar", "Bali", "DPS"]},
 		{"name": "Hong Kong", "country": "Hong Kong", "code": "HKG", "city_name": "Hong Kong", "aliases": ["HKG"]},
 		{"name": "Taipei", "country": "Taiwan", "code": "TPE", "city_name": "Taipei", "aliases": ["TPE"]},
 		{"name": "Beijing", "country": "China", "code": "PEK", "city_name": "Beijing", "aliases": ["PEK"]},

@@ -21,6 +21,16 @@
       "background_color": "#FFE4E9"
     },
     {
+      "name": "Thai Vietjet Air",
+      "code": "VZ",
+      "logo": "images/vj_logo.png",
+      "luggage": "7kg xách tay và 1 kiện 20kg hành lý ký gửi",
+      "meal": false,
+      "aliases": ["ThaiVietJet", "ThaiVietjetAir"],
+      "background_image": "images/vietjet_air_bg.png",
+      "background_color": "#FFE4E9"
+    },
+    {
       "name": "Bamboo Airways",
       "code": "QH",
       "logo": "images/qh_logo.png",

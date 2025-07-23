@@ -197,6 +197,7 @@
 		{"name": "Bucharest", "country": "Romania", "code": "OTP", "city_name": "Bucharest", "aliases": ["Bucharest", "OTP"]},
 		{"name": "Sofia", "country": "Bulgaria", "code": "SOF", "city_name": "Sofia", "aliases": ["Sofia", "SOF"]},
 		{"name": "Varna", "country": "Bulgaria", "code": "VAR", "city_name": "Varna", "aliases": ["Varna", "VAR"]},
-		{"name": "Addis Ababa", "country": "Ethiopia", "code": "ADD", "city_name": "Addis Ababa", "aliases": ["Addis Ababa", "ADD"]}
+		{"name": "Addis Ababa", "country": "Ethiopia", "code": "ADD", "city_name": "Addis Ababa", "aliases": ["Addis Ababa", "ADD"]},
+		{"name": "Katowice", "country": "Poland", "code": "KTW", "city_name": "Katowice", "aliases": ["Katowice", "KTW"]}
 	]
 }

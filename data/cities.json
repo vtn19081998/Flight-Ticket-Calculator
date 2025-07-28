@@ -199,6 +199,7 @@
 		{"name": "Varna", "country": "Bulgaria", "code": "VAR", "city_name": "Varna", "aliases": ["Varna", "VAR"]},
 		{"name": "Addis Ababa", "country": "Ethiopia", "code": "ADD", "city_name": "Addis Ababa", "aliases": ["Addis Ababa", "ADD"]},
 		{"name": "Katowice", "country": "Poland", "code": "KTW", "city_name": "Katowice", "aliases": ["Katowice", "KTW"]},
-		{"name": "Port Moresby", "country": "Papua New Guinea", "code": "POM", "city_name": "Port Moresby", "aliases": ["Port Moresby", "POM"]}
+		{"name": "Port Moresby", "country": "Papua New Guinea", "code": "POM", "city_name": "Port Moresby", "aliases": ["Port Moresby", "POM"]},
+		{"name": "Manila", "country": "Philippines", "code": "MNL", "city_name": "Manila", "aliases": ["MNL"]}
 	]
 }

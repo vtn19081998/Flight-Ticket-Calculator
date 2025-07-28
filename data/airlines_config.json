@@ -679,6 +679,16 @@
 	  "aliases": ["EthiopianAir"],
 	  "background_image": "images/ethiopian_airlines_bg.png",
 	  "background_color": "#F2E8C3"
+	},
+	{
+	  "name": "Air Niugini",
+	  "code": "PX",
+	  "logo": "images/px_logo.png",
+	  "luggage": "1 kiện 7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["AirNiugini"],
+	  "background_image": "images/air_niugini_bg.png",
+	  "background_color": "#E6F2F2"
 	}
   ],
   "child_price_ratio": 0.7

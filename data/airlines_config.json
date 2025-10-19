@@ -1,6 +1,16 @@
 {
   "airlines": [
     {
+      "name": "Sun Phú Quốc Airways",
+      "code": "9G",
+      "logo": "images/9g_logo.png",
+      "luggage": "7kg xách tay và 1 kiện 23kg hành lý ký gửi",
+      "meal": true,
+      "aliases": ["SunPhuQuocAirways", "PhuQuocAirways", "9GAir"],
+      "background_image": "images/sun_phu_quoc_airways_bg.png",
+      "background_color": "#FFF5E1"
+    },
+    {
       "name": "Vietnam Airlines",
       "code": "VN",
       "logo": "images/vn_logo.png",

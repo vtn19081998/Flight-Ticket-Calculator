@@ -202,6 +202,7 @@
 		{"name": "Port Moresby", "country": "Papua New Guinea", "code": "POM", "city_name": "Port Moresby", "aliases": ["Port Moresby", "POM"]},
 		{"name": "Okinawa", "country": "Japan", "code": "OKA", "city_name": "Okinawa", "aliases": ["Okinawa", "OKA"]},
 		{"name": "Stuttgart", "country": "Germany", "code": "STR", "city_name": "Stuttgart", "aliases": ["Stuttgart", "STR"]},
-		{"name": "Budapest", "country": "Hungary", "code": "BUD", "city_name": "Budapest", "aliases": ["Budapest", "BUD"]}
+		{"name": "Budapest", "country": "Hungary", "code": "BUD", "city_name": "Budapest", "aliases": ["Budapest", "BUD"]},
+		{"name": "Buffalo", "country": "United States", "code": "BUF", "city_name": "Buffalo", "aliases": ["BUF"]}
 	]
 }

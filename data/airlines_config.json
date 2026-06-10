@@ -699,6 +699,16 @@
 	  "aliases": ["AirNiugini"],
 	  "background_image": "images/air_niugini_bg.png",
 	  "background_color": "#E6F2F2"
+	},
+	{
+	  "name": "Air Astana",
+	  "code": "KC",
+	  "logo": "images/kc_logo.png",
+	  "luggage": "8kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["AirAstana"],
+	  "background_image": "images/air_astana_bg.png",
+	  "background_color": "#A8DADC"
 	}
   ],
   "child_price_ratio": 0.7

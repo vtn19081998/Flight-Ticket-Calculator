@@ -203,6 +203,8 @@
 		{"name": "Okinawa", "country": "Japan", "code": "OKA", "city_name": "Okinawa", "aliases": ["Okinawa", "OKA"]},
 		{"name": "Stuttgart", "country": "Germany", "code": "STR", "city_name": "Stuttgart", "aliases": ["Stuttgart", "STR"]},
 		{"name": "Budapest", "country": "Hungary", "code": "BUD", "city_name": "Budapest", "aliases": ["Budapest", "BUD"]},
-		{"name": "Buffalo", "country": "United States", "code": "BUF", "city_name": "Buffalo", "aliases": ["BUF"]}
+		{"name": "Buffalo", "country": "United States", "code": "BUF", "city_name": "Buffalo", "aliases": ["BUF"]},
+		{"name": "Almaty", "country": "Kazakhstan", "code": "ALA", "city_name": "Almaty", "aliases": ["ALA"]},
+		{"name": "Shizuoka", "country": "Japan", "code": "FSZ", "city_name": "Shizuoka", "aliases": ["FSZ", "Mt. Fuji Shizuoka"]}
 	]
 }

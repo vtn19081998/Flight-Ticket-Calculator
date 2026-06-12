@@ -709,6 +709,16 @@
 	  "aliases": ["AirAstana"],
 	  "background_image": "images/air_astana_bg.png",
 	  "background_color": "#A8DADC"
+	},
+	{
+	  "name": "Avianca",
+	  "code": "AV",
+	  "logo": "images/av_logo.png",
+	  "luggage": "10kg xách tay và 1 kiện 23kg hành lý ký gửi",
+	  "meal": true,
+	  "aliases": ["AVIANCA", "AviancaAir"],
+	  "background_image": "images/avianca_bg.png",
+	  "background_color": "#D62828"
 	}
   ],
   "child_price_ratio": 0.7

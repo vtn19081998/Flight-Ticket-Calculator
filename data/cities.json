@@ -205,6 +205,8 @@
 		{"name": "Budapest", "country": "Hungary", "code": "BUD", "city_name": "Budapest", "aliases": ["Budapest", "BUD"]},
 		{"name": "Buffalo", "country": "United States", "code": "BUF", "city_name": "Buffalo", "aliases": ["BUF"]},
 		{"name": "Almaty", "country": "Kazakhstan", "code": "ALA", "city_name": "Almaty", "aliases": ["ALA"]},
-		{"name": "Shizuoka", "country": "Japan", "code": "FSZ", "city_name": "Shizuoka", "aliases": ["FSZ", "Mt. Fuji Shizuoka"]}
+		{"name": "Shizuoka", "country": "Japan", "code": "FSZ", "city_name": "Shizuoka", "aliases": ["FSZ", "Mt. Fuji Shizuoka"]},
+		{"name": "Bogota", "country": "Colombia", "code": "BOG", "city_name": "Bogota", "aliases": ["BOG"]},
+		{"name": "Armenia", "country": "Colombia", "code": "AXM", "city_name": "Armenia", "aliases": ["AXM"]}
 	]
 }
